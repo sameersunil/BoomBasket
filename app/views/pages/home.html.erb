@@ -1,7 +1,14 @@
 <div class="container">
-  <div class="jumbotron">
-    <h1>Welcome</h1>
-    <p>We serve all your needs, at the convinience of your door step.</p>
-  </div>
-  <button type="button" class="btn btn-default">Start Shopping!</button>
+    <div class="jumbotron">
+        <h1>Welcome to Boom Basket</h1>
+        <p>We serve all your needs, at the convinience of your door step.</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-8"><%= link_to (image_tag "http://localhost/groceries_tile.jpg", class: "thumbnail", size: "300"), "#" %></div>
+        <div class="col-sm-4"><%= link_to (image_tag "http://localhost/personal_care_tile.jpg", class: "thumbnail", size: "300"), "#" %></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8"><%= link_to (image_tag "http://localhost/beverages_tile.jpg", class: "thumbnail", size: "300"), "#" %></div>
+        <div class="col-sm-4"><%= link_to (image_tag "http://localhost/video_games_tile.jpg", class: "thumbnail", size: "300"), "#" %></div>
+    </div>
 </div>
