@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>BoomBasket</title>
-    <%= csrf_meta_tags %>
+<html lang = "en">
+	<head>
+		<meta charset = "utf-8">
+		<meta name = "viewport" content = "width = device-width, intial-scale = 1">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+		<%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', :media => 'screen' %>
+		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' %>
+		<%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
 
-  <body>
-    <%= yield %>
-  </body>
+		<title><%= title %></title>
+		<%= csrf_meta_tag %>
+		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+	</head>
+	<body>
+		<div class = "navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class = "navbar-header">
+					<%= link_to "BoomBox", root_path, class: "navbar-brand" %>
+					<ul class = "nav navbar-nav">
+						<li class = "active"><%= link_to "Products", products_path %></li>
+						<li class = "active"><%= link_to "Cart", cart_path %></li>
+						<li class = "active"><%= link_to "Sign In", sign_in_path %></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<p></p>
+		<p></p>
+		<div class="container-fluid">
+			<%= yield %>
+		</div>
+	</body>
 </html>
