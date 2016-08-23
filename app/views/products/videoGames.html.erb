@@ -1,3 +1,18 @@
-<div class="jumbotron">
-	<h1>Video Games</h1>
+<div class="container">
+	<div class="jumbotron">
+	    <h1>Video Games</h1>
+	    <h3><a href=<%= root_path %>><span class="glyphicon glyphicon-chevron-left"></span> Back</a></h3>
+	</div>
+	<div class="row">
+	<% @products.each do |product| %>
+		<div class="col-sm-4">
+			<%= image_tag product.img_url, class: "thumbnail", size: "200" %>
+			<h4><%= product.name %></h4>
+			<h4>Rs <%= product.price %></h4>
+			<button type="button" class="btn btn-primary">Add to Cart</button>
+			</br>
+			</br>
+		</div>
+	<% end %>
+	</div>
 </div>

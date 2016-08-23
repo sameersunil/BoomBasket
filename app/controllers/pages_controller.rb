@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
+  include ApplicationHelper
+
   def home
   	@title = "Home"
+  	@user = current_user
   end
 
   def sign_in

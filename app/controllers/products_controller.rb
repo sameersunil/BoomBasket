@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
 	end
 
 	def household
-		@title = "House Hold"
+		@title = "Household"
+		@products = Product.where cat: "Household"
 	end
 
 	def personalCare
@@ -16,10 +17,14 @@ class ProductsController < ApplicationController
 		@title = "Video Games"
 		@products = Product.where cat: "Video Games"
 	end
+
+	def beverages
+		@title = "Beverages"
+		@products = Product.where cat: "Beverages"
+	end
 	
 	def new
 		@title = "New Product"
-		@prod = Product.new
 	end
 
 	def create

@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   root :to => 'pages#home'
 
-  get '/sign_in', :to => 'pages#sign_in'
+  get '/sign_in', :to => 'sessions#new'
+  match '/sign_out', :to => 'sessions#destroy', via: [:delete]
+  match '/sessions', :to => 'sessions#create', via: [:post]
+
   get '/cart', :to => 'pages#cart'
 
   get '/products/household', to: "products#household"
