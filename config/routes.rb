@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root :to => 'pages#home'
 
   get '/sign_in', :to => 'sessions#new'
-  match '/sign_out', :to => 'sessions#destroy', via: [:delete]
+  match '/sign_out', :to => 'sessions#destroy', via: [:get]
   match '/sessions', :to => 'sessions#create', via: [:post]
+  match '/add_to_cart', :to => 'sessions#addToCart', via: [:post]
 
   get '/cart', :to => 'pages#cart'
 

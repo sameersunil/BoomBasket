@@ -22,4 +22,8 @@ class SessionsController < ApplicationController
   		sign_out
   		redirect_to root_url
   	end
+
+    def addToCart
+      session[params[:prod]] = params[:prod]
+    end
 end

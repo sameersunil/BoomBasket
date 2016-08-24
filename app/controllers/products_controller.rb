@@ -5,21 +5,25 @@ class ProductsController < ApplicationController
 
 	def household
 		@title = "Household"
+		@user = current_user
 		@products = Product.where cat: "Household"
 	end
 
 	def personalCare
 		@title = "Personal Care"
+		@user = current_user
 		@products = Product.where cat: "Personal Care"
 	end
 
 	def videoGames
 		@title = "Video Games"
+		@user = current_user
 		@products = Product.where cat: "Video Games"
 	end
 
 	def beverages
 		@title = "Beverages"
+		@user = current_user
 		@products = Product.where cat: "Beverages"
 	end
 	

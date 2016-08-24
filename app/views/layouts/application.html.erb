@@ -7,6 +7,7 @@
 		<%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', :media => 'screen' %>
 		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' %>
 		<%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
+		<%= javascript_include_tag 'application' %>
 
 		<title><%= title %></title>
 
@@ -20,14 +21,21 @@
 	  		<div class="container-fluid">
 	      		<div class = "navbar-header">
 	        		<%= link_to "BoomBasket", root_path, class: "navbar-brand"%>
-	      		</div>  
+	      		</div>
+	      		<% if not @user.nil? %>
+	      			<div class="nav navbar-nav lead">
+			  			<span class="label label-info">Welcomes you <%= @user.email %></span>
+	      			</div>
+	      		<% end %>
 	      		<ul class="nav navbar-nav navbar-right">
-	        		<li><a href=<%= cart_path %>><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a><li>
-	        		<% if @user.nil? %>
-	        			<li><a href=<%= sign_in_path %>><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	        		<% else %>
-	        			<li><a href=<%= sign_out_path %>><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-	        		<% end %>
+	        		<li><a href=<%= cart_path %>><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge">10</span></a></li>
+	        		<li>
+		        		<% if @user.nil? %>
+		        			<a href=<%= sign_in_path %>><span class="glyphicon glyphicon-log-in"></span> Login</a>
+		        		<% else %>
+		        			<a href=<%= sign_out_path %>><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+		        		<% end %>
+		        	</li>
 	      		</ul>
 	      		<form class="navbar-form navbar-right" role="search">
 	        		<div class="input-group">
