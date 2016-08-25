@@ -36,4 +36,9 @@ class ProductsController < ApplicationController
 		@prod.save
 		redirect_to products_new_path 
 	end
+
+	def search
+		@user = current_user
+		@searchResults = Product.find_by_name(params[:search])
+	end
 end

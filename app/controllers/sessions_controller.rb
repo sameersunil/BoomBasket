@@ -4,6 +4,9 @@ class SessionsController < ApplicationController
 	def new
 		@title = "Sign In"
     @failed = params[:login_again]
+    if params[:go] == 1
+      @prevPage = 1
+    end
 	end
 	
 	def create
@@ -12,7 +15,11 @@ class SessionsController < ApplicationController
   			redirect_to sign_in_path(login_again: true) 
   		else
 	  		sign_in @user
-	  		redirect_to root_url
+        if params[:go].nil?
+            redirect_to root_url
+        else
+            redirect_to cart_path
+        end
 	  	end
 
   	end
@@ -24,6 +31,18 @@ class SessionsController < ApplicationController
   	end
 
     def addToCart
+      session[:count] = (session[:count].to_i + 1).to_s
       session[params[:prod]] = params[:prod]
+      cat = params[:cat]
+      redirect_to case cat
+      when "Household" 
+        products_household_path
+      when "Personal Care" 
+        products_personal_care_path
+      when "Beverages" 
+        products_beverages_path
+      when "Video Games" 
+        products_video_games_path
+      end
     end
 end

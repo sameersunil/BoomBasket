@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   match '/sign_out', :to => 'sessions#destroy', via: [:get]
   match '/sessions', :to => 'sessions#create', via: [:post]
   match '/add_to_cart', :to => 'sessions#addToCart', via: [:post]
-
+  get '/search', :to => 'products#search'
   get '/cart', :to => 'pages#cart'
 
   get '/products/household', to: "products#household"
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/products/video_games', to: "products#videoGames"
 
   resources :products
+
+  resources :orders, only: [ :create, :show]
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

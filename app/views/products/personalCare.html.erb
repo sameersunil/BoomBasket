@@ -9,7 +9,7 @@
 			<%= image_tag product.img_url, class: "thumbnail", size: "200" %>
 			<h4><%= product.name %></h4>
 			<h4>Rs <%= product.price %></h4>
-			<button type="button" class="btn btn-primary">Add to Cart</button>
+			<%= link_to "Add to cart", add_to_cart_path(prod: product.id, cat: product.cat), class: "btn btn-primary", method: "post" %>
 			</br>
 			</br>
 		</div>

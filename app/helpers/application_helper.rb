@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def title
-		base_title = "BoomBox"
+		base_title = "BoomBasket"
 		if @title.nil?
 			base_title
 		else
@@ -9,7 +9,7 @@ module ApplicationHelper
 	end
 
 	def getServerIP
-		"192.168.43.160"
+		"192.168.1.102"
 	end
 
 	def current_user= user

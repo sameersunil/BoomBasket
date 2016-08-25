@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1>Search</h1>
+        <h3><a href=<%= root_path %>><span class="glyphicon glyphicon-chevron-left"></span> Back</a></h3>
+        <% if @searchResults.nil? %>
+          No Results Found!
+        <% end %>
+    </div>
+    <ul class="list-group">
+      <% if not @searchResults.nil? %>
+        <% if @searchResults.kind_of?(Array) %>
+        	<% @searchResults.each do |product| %>
+      		<li class="list-group-item">
+      			<div class="row">
+    	  			<div class="col-sm-4"><%= image_tag product.img_url, class: "thumbnail", size: "50" %></div>
+    				<div class="col-sm-4"><h4><%= product.name %></h4></div>
+    				<div class="col-sm-4"><h4>Rs <%= product.price %></h4></div>
+            <%= link_to "Add to cart", add_to_cart_path(prod: product.id, cat: product.cat), class: "btn btn-primary", method: "post" %>
+    			</div>
+      	 </li>
+        <% end %>
+        <% else %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-sm-3"><%= image_tag @searchResults.img_url, class: "thumbnail", size: "100" %></div>
+            <div class="col-sm-3"><h4><%= @searchResults.name %></h4></div>
+            <div class="col-sm-3"><h4>Rs <%= @searchResults.price %></h4></div>
+            <div class="col-sm-3"><%= link_to "Add to cart", add_to_cart_path(prod: @searchResults.id, cat: @searchResults.cat), class: "btn btn-primary", method: "post" %></div>
+          </div>
+    		<% end %>
+      <% end %>
+  	</ul>
+</div>

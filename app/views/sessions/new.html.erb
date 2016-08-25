@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="container">
-  <%= form_for :session, url: sessions_path, class: "form-horizontal" do |f| %>
+  <%= form_for :session, url: sessions_path(go: @prevPage), class: "form-horizontal" do |f| %>
     <div class="row form-group">
       <label class="control-label col-sm-2" for="email">Email:</label>
       <div class="col-sm-10">
@@ -24,7 +24,7 @@
     </div>
     <div class="row">
       <% unless @failed.nil? %>
-        <div class="col-sm-offset-2 col-sm-10 text-danger">Oops! Wrong Credentials!</div>
+        <div class="col-sm-offset-2 col-sm-10"><h4><span class="label label-danger">Oops! Wrong Credentials</span></h4></div>
       <% end %>
       
     </div>

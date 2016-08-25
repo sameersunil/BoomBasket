@@ -14,9 +14,13 @@ class PagesController < ApplicationController
   	@title = "Cart"
   	@user = current_user
     @products = Array.new
+    @count = 0
+    @total = 0
     request.session.to_hash.each{|key, value| 
         product = Product.find_by_id(key.to_s)
         if not product.nil?
+          @count += 1
+          @total += product.price
           @products.push(product)
         end
     }
