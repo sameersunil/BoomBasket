@@ -7,9 +7,10 @@
     	<% @products.each do |product| %>
   		<li class="list-group-item">
   			<div class="row">
-	  			<div class="col-sm-4"><%= image_tag product.img_url, class: "thumbnail", size: "50" %></div>
-				<div class="col-sm-4"><h4><%= product.name %></h4></div>
-				<div class="col-sm-4"><h4>Rs <%= product.price %></h4></div>
+	  			<div class="col-sm-3"><%= image_tag product.img_url, class: "thumbnail", size: "50" %></div>
+				<div class="col-sm-3"><h4><%= product.name %></h4></div>
+				<div class="col-sm-3"><h4>Rs <%= product.price %></h4></div>
+				<div class="col-sm-3"><%= link_to "Remove", remove_from_cart_path(prod: product.id), class: "btn btn-primary" %></div>
 			</div>
   		</li>
   		<% end %>

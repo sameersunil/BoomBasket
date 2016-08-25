@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
 		summary = ""
 		total = 0
 		request.session.to_hash.each{|key, value| 
-        	product = Product.find_by_id(key.to_s)
+        	product = Product.find_by_id(value.to_s)
         	if not product.nil?
         		summary += product.id.to_s + ":"
         		total += product.price

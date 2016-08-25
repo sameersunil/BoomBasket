@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   match '/add_to_cart', :to => 'sessions#addToCart', via: [:post]
   get '/search', :to => 'products#search'
   get '/cart', :to => 'pages#cart'
+  get '/remove_from_cart', to: 'sessions#removeFromCart'
 
   get '/products/household', to: "products#household"
   get '/products/personal_care', to: "products#personalCare"
   get '/products/beverages', to: "products#beverages"
   get '/products/video_games', to: "products#videoGames"
 
-  resources :products
+  resources :products, only: [:create, :new]
 
   resources :orders, only: [ :create, :show]
   
