@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
 
     def addToCart
       session[:count] = (session[:count].to_i + 1).to_s
-      session[session[:count]] = params[:prod]
+      session["I" + params[:prod]] = params[:prod]
       cat = params[:cat]
       redirect_to case cat
       when "Household" 
@@ -49,7 +49,7 @@ class SessionsController < ApplicationController
     def removeFromCart
       @user = current_user
       session[:count] = (session[:count].to_i - 1).to_s
-      session[params[:prod]] = nil
+      session["I" + params[:prod]] = nil
       redirect_to cart_path
     end
 end

@@ -1,7 +1,6 @@
 <div class="container">
     <div class="jumbotron">
         <h1>My Cart</h1>
-        <h3><a href=<%= root_path %>><span class="glyphicon glyphicon-chevron-left"></span> Back</a></h3>
     </div>
     <ul class="list-group">
     	<% @products.each do |product| %>
@@ -10,7 +9,7 @@
 	  			<div class="col-sm-3"><%= image_tag product.img_url, class: "thumbnail", size: "50" %></div>
 				<div class="col-sm-3"><h4><%= product.name %></h4></div>
 				<div class="col-sm-3"><h4>Rs <%= product.price %></h4></div>
-				<div class="col-sm-3"><%= link_to "Remove", remove_from_cart_path(prod: product.id), class: "btn btn-primary" %></div>
+				<div class="col-sm-3"><%= link_to "Remove", remove_from_cart_path(prod: product.id), class: "btn btn-primary", method: "post" %></div>
 			</div>
   		</li>
   		<% end %>

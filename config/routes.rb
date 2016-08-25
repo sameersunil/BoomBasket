@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get '/sign_in', :to => 'sessions#new'
   match '/sign_out', :to => 'sessions#destroy', via: [:get]
   match '/sessions', :to => 'sessions#create', via: [:post]
+  get '/cart', :to => 'pages#cart'
+  match '/remove_from_cart', to: 'sessions#removeFromCart', via: [:post]
   match '/add_to_cart', :to => 'sessions#addToCart', via: [:post]
   get '/search', :to => 'products#search'
-  get '/cart', :to => 'pages#cart'
-  get '/remove_from_cart', to: 'sessions#removeFromCart'
 
   get '/products/household', to: "products#household"
   get '/products/personal_care', to: "products#personalCare"

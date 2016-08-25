@@ -17,11 +17,13 @@ class PagesController < ApplicationController
     @count = 0
     @total = 0
     request.session.to_hash.each{|key, value| 
-        product = Product.find_by_id(value.to_s)
-        if not product.nil?
-          @count += 1
-          @total += product.price
-          @products.push(product)
+        if not /I/.match(key).nil?
+          product = Product.find_by_id(value.to_s)
+          if (not product.nil?)
+            @count += 1
+            @total += product.price
+            @products.push(product)
+          end
         end
     }
   end
