@@ -1,8 +1,4 @@
 class ProductsController < ApplicationController
-	def index
-		@title = "Products"
-	end
-
 	def household
 		@title = "Household"
 		@user = current_user
