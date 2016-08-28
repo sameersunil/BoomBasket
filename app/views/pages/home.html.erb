@@ -1,24 +1,40 @@
 <div class="container">
     <div class="jumbotron">
-        <h1>Welcome to Boom! Basket</h1>
-        <p>We serve all your needs, at the convinience of your door step.</p>
+        <h2>Welcome to Boom! Basket</h2>
+        <p><h4>We serve all your needs, at the convinience of your door step.</h4></p>
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <div><%= link_to (image_tag "http://" + getServerIP + "/groceries_tile.jpg", class: "thumbnail", size: "200"), products_household_path %></div>
-            <h3><span class="label label-primary ">Household</span></h3>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div><%= link_to (image_tag "http://icons.veryicon.com/png/System/Windows%208/Household%20Bungalow.png", class: "center-block", size: "200"), products_household_path %></div>
+                    <h3 class="text-center"><span class="label label-info">Household</span></h3>
+                </div>
+            </div>
         </div>
         <div class="col-sm-3">
-            <%= link_to (image_tag "http://" + getServerIP + "/personal_care_tile.jpg", class: "thumbnail", size: "200"), products_personal_care_path %>
-            <h3><span class="label label-primary">Personal Care</span></h3>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <%= link_to (image_tag "http://0201.nccdn.net/1_2/000/000/124/23d/Icon_3.png", class: "center-block", size: "200"), products_personal_care_path %>
+                    <div class="center-block"><h3 class="text-center"><span class="label label-info">Personal Care</span></h3></div>
+                </div>
+            </div>
         </div>
         <div class="col-sm-3">
-            <%= link_to (image_tag "http://" + getServerIP + "/beverages_tile.jpg", class: "thumbnail", size: "200"), products_beverages_path %>
-            <h3><span class="label label-primary">Beverages</span></h3>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <%= link_to (image_tag "http://publicdomainvectors.org/photos/Anonymous_Soft_drink_icon.png",class: "center-block", size: "200"), products_beverages_path %>
+                    <h3 class="text-center"><span class="label label-info">Beverages</span></h3>
+                </div>
+            </div>
         </div>
         <div class="col-sm-3">
-            <%= link_to (image_tag "http://" + getServerIP + "/video_games_tile.jpg", class: "thumbnail", size: "200"), products_video_games_path %>
-            <h3><span class="label label-primary">Video Games </span></h3>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <%= link_to (image_tag "http://game812.ru/wp-content/themes/mytheme1/images/menu/gamepad.png", class: "center-block", size: "200"), products_video_games_path %>
+                    <h3 class="text-center"><span class="label label-info">Video Games </span></h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,32 +1,32 @@
 <div class="container">
     <div class="jumbotron">
-        <h1>My Cart</h1>
+        <h2>My Cart</h2>
     </div>
-    <ul class="list-group">
     	<% @products.each do |product| %>
-  		<li class="list-group-item">
   			<div class="row">
 	  			<div class="col-sm-3"><%= image_tag product.img_url, class: "thumbnail", size: "50" %></div>
 				<div class="col-sm-3"><h4><%= product.name %></h4></div>
 				<div class="col-sm-3"><h4>Rs <%= product.price %></h4></div>
 				<div class="col-sm-3"><%= link_to "Remove", remove_from_cart_path(prod: product.id), class: "btn btn-primary", method: "post" %></div>
 			</div>
-  		</li>
   		<% end %>
-  	</ul>
-  	<div class="well well-sm">
-  		<% if @products.size != 0 %>
+  	<% if @products.size != 0 %>
+		<div class="well well-sm">	
 			<% if @user.nil? %>
-				<a><span class="glyphicon glyphicon-user lable lable-warning"></span> Guest</a>
-				<h3><span class="label label-warning">Your total is Rs <%= @total %></span></h3>
-				<h3><span class="label label-success"><%= link_to "Proceed", sign_in_path(go: "1"), class: ""%></span></h3>
+				<span class="glyphicon glyphicon-user lable lable-warning"></span> Guest
+				<h3>Your total is Rs <%= @total %></h3>
+				<%= link_to sign_in_path(go: "1") do %>
+					<span class="btn btn-success">Log In</span>
+				<% end %>
 			<% else %>
-				<a><span class="glyphicon glyphicon-user"></span><%= " " + @user.email %></a>
-				<h3><span class="label label-warning">Your total is Rs <%= @total %></span></h3>
-				<h3><span class="label label-success"><%= link_to "Place Order!", orders_path, class: "", method: "post" %></span></h3>
-			<% end %>
-		<% else %>
-			<h3><span class="label label-warning">No Items in Cart!</span></h3>
-		<% end %>
-	</div>
+				<span class="glyphicon glyphicon-user"></span><%= " " + @user.email %>
+				<h3>Your total is Rs <%= @total %></h3>
+				<%= link_to orders_path, method:"post" do %>
+					<span class="btn btn-success">Place Order!</span>
+				<% end %>
+		</div>
+	<% end %>
+	<% else %>
+		<h3 class="text-center"><span class="label label-info">No Items in Cart!</span></h3>
+	<% end %>
 </div>

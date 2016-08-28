@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
 	def new
 		@title = "Sign In"
     @failed = params[:login_again]
-    if params[:go] == "1"
-      @prevPage = "1"
+    if not params[:go].nil?
+      @go = "cart"
     end
 	end
 	

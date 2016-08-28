@@ -1,16 +1,18 @@
 <div class="container">
 	<div class="jumbotron">
-	    <h1>Video Games</h1>
+	    <h2>Video Games</h2>
 	</div>
 	<div class="row">
 	<% @products.each do |product| %>
 		<div class="col-sm-4">
-			<%= image_tag product.img_url, class: "thumbnail", size: "200" %>
-			<h4><%= product.name %></h4>
-			<h4>Rs <%= product.price %></h4>
-			<%= link_to "Add to cart", add_to_cart_path(prod: product.id, cat: product.cat), class: "btn btn-primary", method: "post" %>
-			</br>
-			</br>
+			<div class="panel panel-default">
+		  		<div class="panel-body">
+					<h4 class="lead"><%= product.name %></h4>
+					<%= image_tag product.img_url, class: "center-block", size: "150" %>
+					<h4>Rs <%= product.price %></h4>
+					<%= link_to "Add to cart", add_to_cart_path(prod: product.id, cat: product.cat), class: "btn btn-primary", method: "post" %>
+				</div>
+			</div>
 		</div>
 	<% end %>
 	</div>
