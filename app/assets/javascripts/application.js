@@ -17,17 +17,17 @@
 
 
 $(function(){
-	var cartCount = readCookie("count");
+	var cartCount = localStorage.getItem("count");
 
 	if(cartCount == null){
-		createCookie("cartCount", "1", "0");
-	}else{
-		$("#cartCount").html(readCookie("cartCount"));
+		localStorage.setItem("count", "0");
 	}
 
 	$(".addToCartButton").click(function(){
-		createCookie("cartCount", 1, parseInt(readCookie("cartCount")) + 1);
-		$("#cartCount").html(readCookie("cartCount"));
+		var count = parseInt(localStorage.get("count"));
+		$("#cartCount").html((count + 1) + "");
+		console.log((count + 1) + "");
+		alert("Fuck");
 	});
 
 	$(".removeFromCartButton").click(function(){
@@ -40,29 +40,3 @@ $(function(){
 		}
 	});
 });
-
-function createCookie(name,days,value) {
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime()+(days*24*60*60*1000));
-        var expires = "; expires="+date.toGMTString();
-    }
-    else var expires = "";
-	    document.cookie = name+"="+value+expires+"; path=/";
-}
-
-function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) 
-        	return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-
-function eraseCookie(name) {
-    createCookie(name,"",-1);
-}
