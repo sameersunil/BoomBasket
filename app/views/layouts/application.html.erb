@@ -4,10 +4,11 @@
 		<meta charset = "utf-8">
 		<meta name = "viewport" content = "width = device-width, intial-scale = 1">
 
+		<%= stylesheet_link_tag 'application', :media => 'screen' %>
 		<%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', :media => 'screen' %>
+		<%= javascript_include_tag 'application' %>
 		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' %>
 		<%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
-		<%= javascript_include_tag 'application' %>
 
 		<title><%= title %></title>
 
@@ -17,13 +18,13 @@
 
 	</head>
 	<body>
-		<div class = "navbar">
+		<div class = "navbar navbar-default">
 	  		<div class="container-fluid">
 	      		<div class = "navbar-header">
 	        		<%= link_to "BoomBasket", root_path, class: "navbar-brand"%>
 	      		</div>
 	      		<ul class="nav navbar-nav navbar-left">
-	        		<li>
+	        		<li id="accountInfo">
 		        		<% if @user.nil? %>
 		        			<a><span class="glyphicon glyphicon-user"></span> Guest</a>
 		        		<% else %>
@@ -32,10 +33,11 @@
 		        	</li>
 	      		</ul>
 	      		<ul class="nav navbar-nav navbar-right">
-	        		<li><a href=<%= cart_path %>><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge"><%= session[:count] %></span></a></li>
-	        		<li>
+	        		<li><a href=<%= cart_path %>><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge" id="cartCount"></span></a></li>
+	        		<%= render "sessions/login" %>
+	        		<li id="account">
 		        		<% if @user.nil? %>
-		        			<a href=<%= sign_in_path %>><span class="glyphicon glyphicon-log-in"></span> Login</a>
+		        			<a href="#" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 		        		<% else %>
 		        			<a href=<%= sign_out_path %>><span class="glyphicon glyphicon-log-out"></span> Logout</a>
 		        		<% end %>

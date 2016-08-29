@@ -1,0 +1,33 @@
+<div class="container">
+  <ul class="nav nav-pills well well-sm">
+    <% case @category %>
+      <% when "Household"%>
+        <li class="active"><%= link_to "Household", products_path(category: "Household") %></li>
+          <li><%= link_to "Perosnal Care", products_path(category: "Personal Care") %></li>
+          <li><%= link_to "Beverages", products_path(category: "Beverages") %></li>
+          <li><%= link_to "Video Games", products_path(category: "Video Games") %></li>
+        <% when "Personal Care"%>
+          <li><%= link_to "Household", products_path(category: "Household") %></li>
+          <li class="active"><%= link_to "Perosnal Care", products_path(category: "Personal Care") %></li>
+          <li><%= link_to "Beverages", products_path(category: "Beverages") %></li>
+          <li><%= link_to "Video Games", products_path(category: "Video Games") %></li>
+        <% when "Beverages" %>
+          <li><%= link_to "Household", products_path(category: "Household") %></li>
+          <li><%= link_to "Perosnal Care", products_path(category: "Personal Care") %></li>
+          <li class="active"><%= link_to "Beverages", products_path(category: "Beverages") %></li>
+          <li><%= link_to "Video Games", products_path(category: "Video Games") %></li>
+        <% when "Video Games" %>
+          <li><%= link_to "Household", products_path(category: "Household") %></li>
+          <li><%= link_to "Perosnal Care", products_path(category: "Personal Care") %></li>
+          <li><%= link_to "Beverages", products_path(category: "Beverages") %></li>
+          <li class="active"><%= link_to "Video Games", products_path(category: "Video Games") %></li>
+      <% end %> 
+  </ul>
+	<div class="jumbotron">
+        <h2><%= @category %></h2>
+	</div>
+	<div class="row" id="productListView">
+		<%= render @products %>
+	</div>
+  <h3 class="text-center"><span class="btn btn-primary">More...</span></h3>
+</div>

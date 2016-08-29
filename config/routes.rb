@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'products/new'
-
   root :to => 'pages#home'
 
   get '/sign_in', :to => 'sessions#new'
@@ -11,12 +9,7 @@ Rails.application.routes.draw do
   match '/add_to_cart', :to => 'sessions#addToCart', via: [:post]
   get '/search', :to => 'products#search'
 
-  get '/products/household', to: "products#household"
-  get '/products/personal_care', to: "products#personalCare"
-  get '/products/beverages', to: "products#beverages"
-  get '/products/video_games', to: "products#videoGames"
-
-  resources :products, only: [:create, :new]
+  resources :products, only: [:create, :new, :index]
 
   resources :orders, only: [ :create, :show]
   

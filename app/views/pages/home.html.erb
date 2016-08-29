@@ -7,7 +7,7 @@
         <div class="col-sm-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div><%= link_to (image_tag "http://icons.veryicon.com/png/System/Windows%208/Household%20Bungalow.png", class: "center-block", size: "200"), products_household_path %></div>
+                    <div><%= link_to (image_tag "http://icons.veryicon.com/png/System/Windows%208/Household%20Bungalow.png", class: "center-block", size: "200"), products_path(category: "Household") %></div>
                     <h3 class="text-center"><span class="label label-info">Household</span></h3>
                 </div>
             </div>
@@ -15,7 +15,7 @@
         <div class="col-sm-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <%= link_to (image_tag "http://0201.nccdn.net/1_2/000/000/124/23d/Icon_3.png", class: "center-block", size: "200"), products_personal_care_path %>
+                    <%= link_to (image_tag "http://0201.nccdn.net/1_2/000/000/124/23d/Icon_3.png", class: "center-block", size: "200"), products_path(category: "Personal Care") %>
                     <div class="center-block"><h3 class="text-center"><span class="label label-info">Personal Care</span></h3></div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
         <div class="col-sm-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <%= link_to (image_tag "http://publicdomainvectors.org/photos/Anonymous_Soft_drink_icon.png",class: "center-block", size: "200"), products_beverages_path %>
+                    <%= link_to (image_tag "http://publicdomainvectors.org/photos/Anonymous_Soft_drink_icon.png",class: "center-block", size: "200"), products_path(category: "Beverages") %>
                     <h3 class="text-center"><span class="label label-info">Beverages</span></h3>
                 </div>
             </div>
@@ -31,7 +31,7 @@
         <div class="col-sm-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <%= link_to (image_tag "http://game812.ru/wp-content/themes/mytheme1/images/menu/gamepad.png", class: "center-block", size: "200"), products_video_games_path %>
+                    <%= link_to (image_tag "http://game812.ru/wp-content/themes/mytheme1/images/menu/gamepad.png", class: "center-block", size: "200"), products_path(category: "Video Games") %>
                     <h3 class="text-center"><span class="label label-info">Video Games </span></h3>
                 </div>
             </div>

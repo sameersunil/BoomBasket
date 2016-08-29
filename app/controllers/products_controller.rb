@@ -1,26 +1,9 @@
 class ProductsController < ApplicationController
-	def household
-		@title = "Household"
+	def index
+		@title = params[:category]
+		@category= @title
 		@user = current_user
-		@products = Product.where cat: "Household"
-	end
-
-	def personalCare
-		@title = "Personal Care"
-		@user = current_user
-		@products = Product.where cat: "Personal Care"
-	end
-
-	def videoGames
-		@title = "Video Games"
-		@user = current_user
-		@products = Product.where cat: "Video Games"
-	end
-
-	def beverages
-		@title = "Beverages"
-		@user = current_user
-		@products = Product.where cat: "Beverages"
+		@products = Product.where(cat: @category)
 	end
 	
 	def new

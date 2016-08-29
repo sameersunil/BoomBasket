@@ -1,23 +1,27 @@
 <div class="container">
+	<ul class="nav nav-pills well well-sm">
+		<li><%= link_to "Household", products_path(category: "Household") %></li>
+		<li><%= link_to "Perosnal Care", products_path(category: "Personal Care") %></li>
+		<li><%= link_to "Beverages", products_path(category: "Beverages") %></li>
+		<li><%= link_to "Video Games", products_path(category: "Video Games") %></li>
+	</ul>
     <div class="jumbotron">
         <h2>My Cart</h2>
     </div>
-    	<% @products.each do |product| %>
-  			<div class="row">
-	  			<div class="col-sm-3"><%= image_tag product.img_url, class: "thumbnail", size: "50" %></div>
-				<div class="col-sm-3"><h4><%= product.name %></h4></div>
-				<div class="col-sm-3"><h4>Rs <%= product.price %></h4></div>
-				<div class="col-sm-3"><%= link_to "Remove", remove_from_cart_path(prod: product.id), class: "btn btn-primary", method: "post" %></div>
-			</div>
-  		<% end %>
+	<% @products.each do |product| %>
+		<div class="row">
+			<div class="col-sm-3"><%= image_tag product.img_url, class: "thumbnail", size: "50" %></div>
+			<div class="col-sm-3"><h4><%= product.name %></h4></div>
+			<div class="col-sm-3"><h4>Rs <%= product.price %></h4></div>
+			<div class="col-sm-3"><%= link_to "Remove", remove_from_cart_path(prod: product.id), class: "btn btn-primary removeFromCartButton", method: "post" %></div>
+		</div>
+	<% end %>
   	<% if @products.size != 0 %>
-		<div class="well well-sm">	
+		<div class="well well-sm" id="cartFooterInfo">	
 			<% if @user.nil? %>
 				<span class="glyphicon glyphicon-user lable lable-warning"></span> Guest
-				<h3>Your total is Rs <%= @total %></h3>
-				<%= link_to sign_in_path(go: "1") do %>
-					<span class="btn btn-success">Log In</span>
-				<% end %>
+				<h4>Your total is Rs <%= @total %></h4>
+				<a href="#" data-toggle="modal" data-target="#login"><span class="btn btn-success">Log In</span></a>
 			<% else %>
 				<span class="glyphicon glyphicon-user"></span><%= " " + @user.email %>
 				<h3>Your total is Rs <%= @total %></h3>

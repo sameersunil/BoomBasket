@@ -16,6 +16,7 @@ class PagesController < ApplicationController
     @products = Array.new
     @count = 0
     @total = 0
+    @go = :cart
     request.session.to_hash.each{|key, value| 
         if not /I/.match(key).nil?
           product = Product.find_by_id(value.to_s)
