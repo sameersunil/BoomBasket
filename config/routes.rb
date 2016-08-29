@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root :to => 'pages#home'
-
+  get '/loaderio-26b7ed56082843258c79718ecdf3a51a', :to => 'pages#test'
   get '/sign_in', :to => 'sessions#new'
   match '/sign_out', :to => 'sessions#destroy', via: [:get]
   match '/sessions', :to => 'sessions#create', via: [:post]
