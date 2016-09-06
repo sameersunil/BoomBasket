@@ -1,12 +1,18 @@
-<%= render "addedToCart" %>
 <div class="col-sm-4">
 	<div class="panel panel-default">
   		<div class="panel-body">
   			<h4 class="lead"><%= product.name %></h4>
 			<%= image_tag product.img_url, class: "center-block", size: "150" %>
 			<h4>Rs <%= product.price %></h4>
-			<%= link_to add_to_cart_path(prod: product.id), class: "addToCartButton", method: "post", remote: true do %>
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productAdded">Add to cart</button>
+			<%= form_for :cart, url: add_to_cart_path(prod: product.id), class: "form-horizontal", remote: true do |f| %>
+				<div class = "row">
+					<div class="col-sm-3">
+						<%= f.text_field :qty, class: "form-control", placeholder: "Qty" %>
+				    </div>
+				    <div class="col-sm-4 pull-right">
+				    	<button type="submit" class="btn btn-primary addToCartButton " data-toggle="modal" data-target="#productAdded">Add to Cart</button>
+					</div>
+				</div>
 			<% end %>
 		</div>
 	</div>

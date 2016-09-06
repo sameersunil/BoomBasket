@@ -27,7 +27,10 @@
 
   def addToCart
     session[:count] = (session[:count].to_i + 1).to_s
-    session["I" + params[:prod]] = params[:prod]
+    session["I" + params[:prod]] = params[:prod]  + ":" + (verifyQty params[:cart][:qty])  
+    respond_to do |format|
+      format.js
+    end
   end
 
   def removeFromCart

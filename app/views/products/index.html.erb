@@ -26,8 +26,13 @@
 	<div class="jumbotron">
         <h2><%= @category %></h2>
 	</div>
+  <%= render "addedToCart" %>
 	<div class="row" id="productListView">
-		<%= render @products %>
+		<%= render @products[0, 9] %>
 	</div>
-  <h3 class="text-center"><span class="btn btn-primary">More ...</span></h3>
+  <h3 class="text-center">
+    <%= link_to products_path(category: @category), id: "moreButton", method: "get", remote: true do %>
+      <button type="button" class="btn btn-primary">More...</button>
+    <% end %>
+  </h3>
 </div>

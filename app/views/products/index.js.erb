@@ -1,0 +1,4 @@
+<% if @currentPageNum == @pageCount %>
+	$("#moreButton").hide();
+<% end %>
+$("#productListView").append('<%= j (render @products[@start, @end]) %>');

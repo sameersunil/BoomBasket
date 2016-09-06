@@ -1,0 +1,24 @@
+<div class="container">
+	<ul class="nav nav-pills well well-sm">
+		<li><%= link_to "Household", products_path(category: "Household") %></li>
+		<li><%= link_to "Perosnal Care", products_path(category: "Personal Care") %></li>
+		<li><%= link_to "Beverages", products_path(category: "Beverages") %></li>
+		<li><%= link_to "Video Games", products_path(category: "Video Games") %></li>
+	</ul>
+    <div class="jumbotron">
+        <h2>My Orders</h2>
+    </div>
+    <% if @orders.size == 0 %>
+		<h3 class="text-center"><span class="label label-info">No Order History!</span></h3>
+    <% else %>
+    	<% @orders.each do |order| %>
+			<div class="row">
+				<div class="col-sm-2 text-center"><h4><%= order.id %></h4></div>
+				<div class="col-sm-2 text-center"><h4><%= order.updated_at.to_s(:db).split(" ")[0] %></h4></div>
+				<div class="col-sm-2 "><h4>Rs <%= order.total %></h4></div>
+				<div class="col-sm-6 text-center"><%= link_to "View", orders_path(order: order.id), class: "btn btn-primary removeFromCartButton", method: "post" %></div>
+
+			</div>
+		<% end %>
+	<% end %>
+</div>

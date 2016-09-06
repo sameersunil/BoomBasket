@@ -2,8 +2,22 @@ class ProductsController < ApplicationController
 	def index
 		@title = params[:category]
 		@category= @title
-		@user = current_user
+		@user = current_user 
 		@products = Product.where(cat: @category)
+		@totalProd = @products.length
+		if @totalProd % 10 != 0
+			@pageCount = @totalProd / 10 + 1
+		else
+			@pageCount = @totalProd / 10
+		end
+		session[:pageCount] = session[:pageCount].nil? ?  "1" : (session[:pageCount].to_i + 1).to_s
+		@currentPageNum = session[:pageCount].to_i
+		@start = @currentPageNum * 9
+		@end = @start + 9
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 	
 	def new

@@ -8,4 +8,12 @@ module SessionsHelper
 		session[:remember_token] = nil
 		current_user= nil
 	end
+
+	def verifyQty qty
+		if not /[1-9][0-9]*/.match(qty).nil?
+			return qty
+		else
+			return "1"
+		end
+	end
 end
