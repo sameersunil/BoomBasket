@@ -24,13 +24,6 @@
 	        		<%= link_to "BoomBasket", root_path, class: "navbar-brand"%>
 	      		</div>
 	      		<ul class="nav navbar-nav navbar-left">
-	        		<li id="accountInfo">
-		        		<% if @user.nil? %>
-		        			<a><span class="glyphicon glyphicon-user"></span> Guest</a>
-		        		<% else %>
-		        			<a><span class="glyphicon glyphicon-user"></span><%= " " + @user.email %></a>
-		        		<% end %>
-		        	</li>
 	      		</ul>
 	      		<ul class="nav navbar-nav navbar-right">
 	        		<li><a href=<%= cart_path %>><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge" id="cartCount"><%= session[:count] %></span></a></li>
@@ -40,7 +33,7 @@
 		        			<a href="#" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 		        		<% else %>
 		        			 <a data-toggle="dropdown" type = "button">
-							  	<span class="glyphicon glyphicon-user">Account</span>
+							  	<span class="glyphicon glyphicon-user"><%=@user.email.split("@")[0].slice(0, 5).upcase%></span>
 							  		<ul class="dropdown-menu">
 									    <li><a href=<%= orders_path %>>Orders</a></li>
 									    <li><a href=<%= sign_out_path %>>Logout</a></li>
