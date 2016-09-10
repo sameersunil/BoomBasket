@@ -1,16 +1,16 @@
 module ProductsHelper
-	def getPageNum
+	def getPageNum perPage
 		pageCount = Product.where(cat: @category).count
-		if pageCount % 10 != 0
-			pageCount = pageCount / 10 + 1
+		if pageCount % perPage != 0
+			pageCount = pageCount / perPage + 1
 		else
-			pageCount = pageCount / 10
+			pageCount = pageCount / perPage
 		end
 		return pageCount
 	end
 
 	def getNextPageNum currPageNum, pageCount
-		if currPageNum == pageCount + 1
+		if currPageNum == pageCount
 			return ""
 		else
 			return (currPageNum + 1).to_s

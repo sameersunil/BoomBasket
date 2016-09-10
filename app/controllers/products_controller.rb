@@ -5,8 +5,8 @@ class ProductsController < ApplicationController
 		@title = params[:category]
 		@category = @title 
 		@pageNum = params[:page].to_i
-		@pageCount = getPageNum
 		@perPage = 9
+		@pageCount = getPageNum @perPage
 		@products = Product.where(cat: @category).limit(@perPage).offset((@pageNum - 1) * @perPage)
 		@nextPage = getNextPageNum @pageNum, @pageCount
 		@prevPage = getPrevPageNum @pageNum
@@ -15,8 +15,8 @@ class ProductsController < ApplicationController
 	def paginate
 		@category = params[:category]
 		@pageNum = params[:page].to_i
-		@pageCount = getPageNum
 		@perPage = 9
+		@pageCount = getPageNum @perPage
 		@products = Product.where(cat: @category).limit(@perPage).offset((@pageNum - 1) * @perPage)
 		@nextPage = getNextPageNum @pageNum, @pageCount
 		@prevPage = getPrevPageNum @pageNum
