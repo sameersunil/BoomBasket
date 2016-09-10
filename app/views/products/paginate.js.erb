@@ -1,0 +1,10 @@
+$('#productListView').html('<%= j render @products %>')
+
+$("#prevButton").html('<%= link_to paginate_path(category: @category, page: @prevPage), id: "prevButton", method: "post", remote: true do %><button type="button" class="btn btn-primary"><span class = "glyphicon glyphicon-chevron-left"></span> Prev</button><% end %>')
+$("#nextButton").html('<%= link_to paginate_path(category: @category, page: @nextPage), id: "nextButton", method: "post", remote: true do %><button type="button" class="btn btn-primary">Next <span class = "glyphicon glyphicon-chevron-right"></span></button><% end %>')
+
+<% if @nextPage == "" %>
+$("#nextButton").html('<%= link_to paginate_path(category: @category, page: @nextPage), id: "nextButton", method: "post", remote: true do %><button type="button" class="btn btn-disabled" disabled>Next <span class = "glyphicon glyphicon-chevron-right"></span></button><% end %>')
+<% elsif @prevPage == "" %>
+$("#prevButton").html('<%= link_to paginate_path(category: @category, page: @prevPage), id: "prevButton", method: "post", remote: true do %><button type="button" class="btn btn-disabled" disabled>Next  <span class = "glyphicon glyphicon-chevron-left"></span></button><% end %>')
+<% end %>

@@ -1,22 +1,27 @@
 class ProductsController < ApplicationController
+	include ProductsHelper
 	def index
+		@user = current_user
 		@title = params[:category]
-		@category= @title
-		@user = current_user 
-		@products = Product.where(cat: @category)
-		@totalProd = @products.length
-		if @totalProd % 10 != 0
-			@pageCount = @totalProd / 10 + 1
-		else
-			@pageCount = @totalProd / 10
-		end
-		session[:pageCount] = session[:pageCount].nil? ?  "1" : (session[:pageCount].to_i + 1).to_s
-		@currentPageNum = session[:pageCount].to_i
-		@start = @currentPageNum * 9
-		@end = @start + 9
+		@category = @title 
+		@pageNum = params[:page].to_i
+		@pageCount = getPageNum
+		@perPage = 9
+		@products = Product.where(cat: @category).limit(@perPage).offset((@pageNum - 1) * @perPage)
+		@nextPage = getNextPageNum @pageNum, @pageCount
+		@prevPage = getPrevPageNum @pageNum
+	end
+
+	def paginate
+		@category = params[:category]
+		@pageNum = params[:page].to_i
+		@pageCount = getPageNum
+		@perPage = 9
+		@products = Product.where(cat: @category).limit(@perPage).offset((@pageNum - 1) * @perPage)
+		@nextPage = getNextPageNum @pageNum, @pageCount
+		@prevPage = getPrevPageNum @pageNum
 		respond_to do |format|
 			format.js
-			format.html
 		end
 	end
 	

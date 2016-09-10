@@ -2,25 +2,25 @@
   <ul class="nav nav-pills well well-sm">
     <% case @category %>
       <% when "Household"%>
-        <li class="active"><%= link_to "Household", products_path(category: "Household") %></li>
-          <li><%= link_to "Perosnal Care", products_path(category: "Personal Care") %></li>
-          <li><%= link_to "Beverages", products_path(category: "Beverages") %></li>
-          <li><%= link_to "Video Games", products_path(category: "Video Games") %></li>
+        <li class="active"><%= link_to "Household", products_path(category: "Household", page: "1") %></li>
+          <li><%= link_to "Perosnal Care", products_path(category: "Personal Care", page: "1") %></li>
+          <li><%= link_to "Beverages", products_path(category: "Beverages", page: "1") %></li>
+          <li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
         <% when "Personal Care"%>
-          <li><%= link_to "Household", products_path(category: "Household") %></li>
-          <li class="active"><%= link_to "Perosnal Care", products_path(category: "Personal Care") %></li>
-          <li><%= link_to "Beverages", products_path(category: "Beverages") %></li>
-          <li><%= link_to "Video Games", products_path(category: "Video Games") %></li>
+          <li><%= link_to "Household", products_path(category: "Household", page: "1") %></li>
+          <li class="active"><%= link_to "Perosnal Care", products_path(category: "Personal Care", page: "1") %></li>
+          <li><%= link_to "Beverages", products_path(category: "Beverages", page: "1") %></li>
+          <li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
         <% when "Beverages" %>
-          <li><%= link_to "Household", products_path(category: "Household") %></li>
-          <li><%= link_to "Perosnal Care", products_path(category: "Personal Care") %></li>
-          <li class="active"><%= link_to "Beverages", products_path(category: "Beverages") %></li>
-          <li><%= link_to "Video Games", products_path(category: "Video Games") %></li>
+          <li><%= link_to "Household", products_path(category: "Household", page: "1") %></li>
+          <li><%= link_to "Perosnal Care", products_path(category: "Personal Care", page: "1") %></li>
+          <li class="active"><%= link_to "Beverages", products_path(category: "Beverages", page: "1") %></li>
+          <li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
         <% when "Video Games" %>
-          <li><%= link_to "Household", products_path(category: "Household") %></li>
-          <li><%= link_to "Perosnal Care", products_path(category: "Personal Care") %></li>
-          <li><%= link_to "Beverages", products_path(category: "Beverages") %></li>
-          <li class="active"><%= link_to "Video Games", products_path(category: "Video Games") %></li>
+          <li><%= link_to "Household", products_path(category: "Household", page: "1") %></li>
+          <li><%= link_to "Perosnal Care", products_path(category: "Personal Care", page: "1") %></li>
+          <li><%= link_to "Beverages", products_path(category: "Beverages", page: "1") %></li>
+          <li class="active"><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
       <% end %> 
   </ul>
 	<div class="jumbotron">
@@ -28,11 +28,20 @@
 	</div>
   <%= render "addedToCart" %>
 	<div class="row" id="productListView">
-		<%= render @products[0, 9] %>
+		<%= render @products %>
 	</div>
   <h3 class="text-center">
-    <%= link_to products_path(category: @category), id: "moreButton", method: "get", remote: true do %>
-      <button type="button" class="btn btn-primary">More...</button>
+    <%= link_to paginate_path(category: @category, page: @prevPage), id: "prevButton", method: "post", remote: true do %>
+      <button type="button" class="btn btn-disabled" disabled><span class = "glyphicon glyphicon-chevron-left"></span> Prev</button>
+    <% end %>
+    <% if @nextPage == "" %>
+      <%= link_to paginate_path(category: @category, page: @nextPage), id: "nextButton", method: "post", remote: true do %>
+        <button type="button" class="btn btn-disabled" disabled>Next  <span class = "glyphicon glyphicon-chevron-right"></span></button>
+      <% end %>
+    <% else %>
+      <%= link_to paginate_path(category: @category, page: @nextPage), id: "nextButton", method: "post", remote: true do %>
+      <button type="button" class="btn btn-primary">Next  <span class = "glyphicon glyphicon-chevron-right"></span></button>
+    <% end %>
     <% end %>
   </h3>
 </div>

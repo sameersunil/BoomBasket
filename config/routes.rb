@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   match '/sessions', :to => 'sessions#create', via: [:post]
   get '/cart', :to => 'pages#cart'
   match '/remove_from_cart', to: 'sessions#removeFromCart', via: [:post]
-  match '/add_to_cart', :to => 'sessions#addToCart', via: [:post], defaults: { format: 'js' }
+  match '/add_to_cart', :to => 'sessions#addToCart', via: [:post]
   get '/search', :to => 'products#search'
+  
+  match '/paginate', :to => 'products#paginate', via: [:post]
 
   resources :products, only: [:create, :new, :index]
 
