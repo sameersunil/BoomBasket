@@ -1,3 +1,6 @@
+$('html, body').animate({
+        scrollTop: $("#productListView").offset().top
+    }, 1000);
 $('#productListView').html('<%= j render @products %>')
 
 $("#prevButton").html('<%= link_to paginate_path(category: @category, page: @prevPage), id: "prevButton", method: "post", remote: true do %><button type="button" class="btn btn-primary"><span class = "glyphicon glyphicon-chevron-left"></span> Prev</button><% end %>')
