@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search/search'
+
   root :to => 'pages#home'
 
   get '/sign_in', :to => 'sessions#new'
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
   get '/cart', :to => 'pages#cart'
   match '/remove_from_cart', to: 'sessions#removeFromCart', via: [:post]
   match '/add_to_cart', :to => 'sessions#addToCart', via: [:post]
-  get '/search', :to => 'products#search'
+  get '/search', :to => 'search#search'
   
   match '/paginate', :to => 'products#paginate', via: [:post]
 

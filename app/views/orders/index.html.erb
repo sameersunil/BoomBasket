@@ -16,8 +16,7 @@
 				<div class="col-sm-2 text-center"><h4><%= order.id %></h4></div>
 				<div class="col-sm-2 text-center"><h4><%= order.updated_at.to_s(:db).split(" ")[0] %></h4></div>
 				<div class="col-sm-2 "><h4>Rs <%= order.total %></h4></div>
-				<div class="col-sm-6 text-center"><%= link_to "View", orders_path(order: order.id), class: "btn btn-primary removeFromCartButton", method: "post" %></div>
-
+				<div class="col-sm-6 text-center"><%= link_to "View", order_path(id: order.id), class: "btn btn-primary removeFromCartButton", method: "get" %></div>
 			</div>
 		<% end %>
 	<% end %>

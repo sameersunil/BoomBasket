@@ -23,7 +23,7 @@
 			<% if @user.nil? %>
 				<span class="glyphicon glyphicon-user lable lable-warning"></span> GUEST
 				<h4>Your total is Rs <%= @total %></h4>
-				<a href="#" data-toggle="modal" data-target="#login"><span class="btn btn-success">Log In</span></a>
+				<a data-toggle="modal" data-target="#login"><span class="btn btn-success">Log In</span></a>
 			<% else %>
 				<span class="glyphicon glyphicon-user"></span><%= " " + @user.email.split("@")[0].slice(0, 5).upcase %>
 				<h3>Your total is Rs <%= @total %></h3>

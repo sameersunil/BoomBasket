@@ -1,7 +1,12 @@
 class OrdersController < ApplicationController
-	include ApplicationHelper
+	include ApplicationHelper, OrdersHelper
 	def show
 		@user = current_user
+		order = Order.find(params[:id])
+		@orderID = order.id
+		productsInfo = getProductsList order.summary
+		@productsList = productsInfo[0]
+		@quantityList = productsInfo[1]
 	end
 
 	def index
@@ -28,8 +33,6 @@ class OrdersController < ApplicationController
          }
         session[:count] = "0"
         order = Order.new email: @user.email, summary: summary, total: total
-        if order.save
-        	redirect_to order_path(order.id)
-        end
+        order.save
 	end
 end

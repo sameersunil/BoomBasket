@@ -1,7 +1,9 @@
 module ProductsHelper
 	def getPageNum perPage
 		pageCount = Product.where(cat: @category).count
-		if pageCount % perPage != 0
+		if pageCount == 0
+			pageCount = 1
+		elsif pageCount % perPage != 0
 			pageCount = pageCount / perPage + 1
 		else
 			pageCount = pageCount / perPage

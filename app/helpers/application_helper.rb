@@ -8,10 +8,6 @@ module ApplicationHelper
 		end
 	end
 
-	def getServerIP
-		"192.168.1.101"
-	end
-
 	def current_user= user
 		@current_user = user
 	end

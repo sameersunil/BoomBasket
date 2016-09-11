@@ -6,7 +6,15 @@
 		<li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
 	</ul>
 	<div class="jumbotron">
-	    <h2>Order Placed Successfully!</h2>
+	    <h2>Order ID : <%= @orderID %></h2>
 	</div>
-	<h3 class="text-center"><span class="label label-success">Continue Shopping!</span></h3>
+	<% @productsList.each_index do |i| %>
+		<div class="row">
+			<div class="col-sm-2"><%= image_tag @productsList[i].img_url, class: "thumbnail", size: "50" %></div>
+			<div class="col-sm-2 text-center"><h4><%= @productsList[i].name %></h4></div>
+			<div class="col-sm-2 text-center"><h4>Rs <%= @productsList[i].price %></h4></div>
+			<div class="col-sm-2 text-center"><h4><%= @quantityList[i] %></h4></div>
+			<div class="col-sm-2 text-center"><h4>Rs <%= @quantityList[i].to_i * @productsList[i].price %></h4></div>
+		</div>
+	<% end %>
 </div>
