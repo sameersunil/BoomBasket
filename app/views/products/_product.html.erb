@@ -2,7 +2,7 @@
 	<div class="panel panel-default">
   		<div class="panel-body">
   			<h4 class="lead"><%= product.name %></h4>
-			<%= image_tag product.img_url, class: "center-block", size: "150" %>
+			<%= image_tag product.img_url , class: "center-block fullImageTile", size: "150" %>
 			<h4>Rs <%= product.price %></h4>
 			<%= form_for :cart, url: add_to_cart_path(prod: product.id), class: "form-horizontal", remote: true do |f| %>
 				<div class = "row">

@@ -19,11 +19,17 @@ class PagesController < ApplicationController
     @total = 0
     @go = :cart
     request.session.to_hash.each{|key, value| 
-        if not /I/.match(key).nil?
+        if not /G|MA|MAP/.match(key).nil?
           tmp = value.split(":")
           productID = tmp[0]
           qty = tmp[1]
-          product = Product.find_by_id(productID)
+          if not /G/.match(key).nil?
+            product = Product.find_by_id(productID)
+          elsif not /MAP/.match(key).nil?
+            product = Part.find_by_id(productID)
+          elsif not /MA/.match(key).nil?
+            product = Airplane.find_by_id(productID)
+          end
           if (not product.nil?)
             @count += 1
             @total += (product.price.to_i * qty.to_i)

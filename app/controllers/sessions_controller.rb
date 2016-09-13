@@ -26,12 +26,13 @@
 	end
 
   def addToCart
-    if session["I" + params[:prod]].nil?
-      session[:count] = (session[:count].to_i + 1).to_s
-      session["I" + params[:prod]] = params[:prod]  + ":" + (verifyQty params[:cart][:qty])
+    prefix = params[:type].nil? ? "G" : params[:type]
+    if session[prefix + params[:prod]].nil?
+        session[:count] = (session[:count].to_i + 1).to_s
+        session[prefix + params[:prod]] = params[:prod]  + ":" + (verifyQty params[:cart][:qty])
     else
-      prevQty = session["I" + params[:prod]].split(":")[1]
-      session["I" + params[:prod]] = params[:prod]  + ":" + ((verifyQty params[:cart][:qty]).to_i + prevQty.to_i).to_s
+        prevQty = session[prefix + params[:prod]].split(":")[1]
+        session[prefix + params[:prod]] = params[:prod]  + ":" + ((verifyQty params[:cart][:qty]).to_i + prevQty.to_i).to_s
     end
     respond_to do |format|
       format.js
@@ -40,8 +41,12 @@
 
   def removeFromCart
     @user = current_user
-    session[:count] = (session[:count].to_i - 1).to_s
-    session["I" + params[:prod]] = nil
+    prefix = params[:type].nil? ? "G" : params[:type]
+
+    if not session[prefix + params[:prod]].nil?
+        session[:count] = (session[:count].to_i - 1).to_s
+        session[prefix + params[:prod]] = nil
+    end
     redirect_to cart_path
   end
 end

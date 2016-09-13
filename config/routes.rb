@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   match '/paginate', :to => 'products#paginate', via: [:post]
 
   resources :products, only: [:create, :new, :index]
-
   resources :orders, only: [ :create, :show, :index]
+  resources :airplanes
+  resources :parts
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

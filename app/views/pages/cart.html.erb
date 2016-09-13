@@ -1,10 +1,10 @@
-<div class="container">
+	<div class="container">
 	<ul class="nav nav-pills well well-sm">
 		<li><%= link_to "Household", products_path(category: "Household", page: "1") %></li>
 		<li><%= link_to "Perosnal Care", products_path(category: "Personal Care", page: "1") %></li>
 		<li><%= link_to "Beverages", products_path(category: "Beverages", page: "1") %></li>
 		<li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
-		<li><%= link_to "Model Airplanes", products_path(category: "Video Games", page: "1") %></li>
+		<li><%= link_to "Model Airplanes", airplanes_path(page: "1") %></li>
 	</ul>
     <div class="jumbotron">
         <h2>My Cart</h2>
@@ -16,7 +16,14 @@
 			<div class="col-sm-2 text-center"><h4>Rs <%= @products[i].price %></h4></div>
 			<div class="col-sm-2 text-center"><h4><%= @qtys[i] %></h4></div>
 			<div class="col-sm-2 text-center"><h4>Rs <%= @qtys[i].to_i * @products[i].price %></h4></div>
-			<div class="col-sm-2 text-center"><%= link_to "Remove", remove_from_cart_path(prod: @products[i].id), class: "btn btn-primary removeFromCartButton", method: "post" %></div>
+			<div class="col-sm-2 text-center">
+				<% if @products[i].class.to_s == "Airplane" %>
+					<%= link_to "Remove", remove_from_cart_path(prod: @products[i].id, type: "MA"), class: "btn btn-primary removeFromCartButton", method: "post" %></div>
+				<% elsif @products[i].class.to_s == "Part" %>
+					<%= link_to "Remove", remove_from_cart_path(prod: @products[i].id, type: "MAP"), class: "btn btn-primary removeFromCartButton", method: "post" %></div>
+				<% elsif @products[i].class.to_s == "Product" %>
+					<%= link_to "Remove", remove_from_cart_path(prod: @products[i].id), class: "btn btn-primary removeFromCartButton", method: "post" %></div>
+				<% end %>
 		</div>
 	<% end %>
   	<% if @products.size != 0 %>
