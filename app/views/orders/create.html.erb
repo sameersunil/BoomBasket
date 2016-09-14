@@ -1,0 +1,15 @@
+<div class="container">
+	<ul class="nav nav-pills well well-sm">
+		<li><%= link_to "Household", products_path(category: "Household", page: "1") %></li>
+		<li><%= link_to "Perosnal Care", products_path(category: "Personal Care", page: "1") %></li>
+		<li><%= link_to "Beverages", products_path(category: "Beverages", page: "1") %></li>
+		<li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
+		<li><%= link_to "Model Airplanes", airplanes_path(page: "1") %></li>
+	</ul>
+	<div class="jumbotron">
+	    <h2>Order Placed Successfully!</h2>
+	</div>
+	<%= link_to root_path, style: "text-decoration: none;" do %>
+		<h3 class="text-center"><span class="label label-success">Continue Shopping!</span></h3>
+	<% end %>
+</div>

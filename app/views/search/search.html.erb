@@ -1,0 +1,51 @@
+<div class="container">
+     <ul class="nav nav-pills well well-sm">
+          <li><%= link_to "Household", products_path(category: "Household", page: "1") %></li>
+          <li><%= link_to "Perosnal Care", products_path(category: "Personal Care", page: "1") %></li>
+          <li><%= link_to "Beverages", products_path(category: "Beverages", page: "1") %></li>
+          <li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
+          <li><%= link_to "Model Airplanes", airplanes_path(page: "1") %></li>
+    </ul>
+    <h2><span class="glyphicon glyphicon-search"></span>Search Results</h2>   
+    <% if @searchResults.count != 0 %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @searchResults.each do |product| %>
+          <tr>
+            <td>
+              <%= product.name %>
+              <%= image_tag product.img_url, class: "thumbnail", size: "50" %>
+            </td>
+            <td>&#8377;<%= number_with_precision(product.price, :precision => 2, :delimiter => ',') %></td>
+            <% if product.class.to_s == "Airplane" %>
+              <%= form_for :cart, url: add_to_cart_path(prod: product.id, type: "MA"), class: "form-horizontal", remote: true do |f| %>
+                <td><%= f.text_field :qty, class: "form-control quantityTF", placeholder: "Qty" %></td>
+                <td><button type="submit" class="btn btn-primary addToCartButton">Add to Cart</button></td>
+              <% end %>
+            <% elsif product.class.to_s == "Part" %>
+                <%= form_for :cart, url: add_to_cart_path(prod: product.id, type: "MAP"), class: "form-horizontal", remote: true do |f| %>
+                <td><%= f.text_field :qty, class: "form-control quantityTF", placeholder: "Qty" %></td>
+                <td><button type="submit" class="btn btn-primary addToCartButton">Add to Cart</button></td>
+              <% end %>
+            <% elsif product.class.to_s == "Product" %>
+                <%= form_for :cart, url: add_to_cart_path(prod: product.id, type: "G"), class: "form-horizontal", remote: true do |f| %>
+                <td><%= f.text_field :qty, class: "form-control quantityTF", placeholder: "Qty" %></td>
+                <td><button type="submit" class="btn btn-primary addToCartButton">Add to Cart</button></td>
+              <% end %> 
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h3 class="text-center"><span class="label label-info">No Results Found!</span></h3>
+    <% end %>
+</div>

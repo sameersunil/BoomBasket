@@ -1,0 +1,53 @@
+<div id="signUp" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sign Up</h4>
+      </div>
+      <%= form_for :user, url: users_path, class: "form-horizontal", remote: true do |f| %>
+        <div class="modal-body">
+          <div class="row form-group">
+            <label class="control-label col-sm-4" for="email">Email</label>
+            <div class="col-sm-8">
+              <%= f.text_field :email, class: "form-control", id: "emailTextField", placeholder: "Email" %>            </div>
+          </div>
+          <div class="row form-group">
+            <label class="control-label col-sm-4" for="email">First Name</label>
+            <div class="col-sm-8">
+              <%= f.text_field :fname, class: "form-control", id: "fNameTextField", placeholder: "First Name" %>            </div>
+          </div>
+          <div class="row form-group">
+            <label class="control-label col-sm-4" for="email">Last Name</label>
+            <div class="col-sm-8">
+              <%= f.text_field :lname, class: "form-control", id: "lNameTextField", placeholder: "Last Name" %>            </div>
+          </div>
+          <div class="row form-group">
+            <label class="control-label col-sm-4" for="pwd">Password</label>
+            <div class="col-sm-8">
+              <%= f.password_field :pwd, class: "form-control", id: "pwdTextField" , placeholder: "Password" %>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="control-label col-sm-4" for="pwd">Renter Password</label>
+            <div class="col-sm-8">
+              <%= f.password_field :pwdr, class: "form-control", id: "pwdTextFieldR" , placeholder: "Renter Password" %>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="control-label col-sm-4" for="pwd">Country</label>
+            <div class="col-sm-8">
+              <%= f.text_field :country, class: "form-control", id: "countryTextField" , placeholder: "Country" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-offset-2 col-sm-10" id="wrongLoginInfo"><h4><span class="label label-danger">Oops! Wrong Credentials</span></h4></div>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Sign Up</button>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
