@@ -40,7 +40,7 @@
 		        		<% else %>
 		        		<li>
 		        			<a data-toggle="dropdown" type = "button">
-		        				<span class="glyphicon glyphicon-user"><%= @user.fname.upcase %></span>
+		        				<span class="glyphicon glyphicon-user"><%= @user.fname %></span>
 						  		<ul class="dropdown-menu">
 								    <li><a href=<%= orders_path %>><span class="glyphicon glyphicon-list-alt"></span> Orders</a></li>
 								    <li><a href=<%= sign_out_path %>><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>	
@@ -59,9 +59,15 @@
 				</form>
 			</div>
 	    </nav>
-	    <div class="container" id="signUpSuccessfull">
-		    
-		</div>
+	    <% if not params[:info].nil? %>
+		    <div class="container" id="signUpSuccessfull">
+		    	<% if params[:info] == "Continue Shopping!" %>
+			    	<div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    	<strong>Order Placed!</strong> <%= params[:info] %>
+			    	</div>
+			    <% end %>
+			</div>
+		<% end %>
 		<%= yield %>
 	</body>
 </html>

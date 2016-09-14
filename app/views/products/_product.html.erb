@@ -13,10 +13,10 @@
 							<div class="emptyDiv"></div>
 						</div>
 						<div class = "row">
-							<div class="col-sm-offset-1 col-sm-4">
-								<%= f.text_field :qty, class: 'form-control quantityTF', placeholder: "Qty" %>
+							<div class="col-sm-6">
+								<%= f.text_field :qty, class: 'form-control quantityTF', placeholder: "Qty", value: "1", type: "number", min: "1", max: "200" %>
 							</div>
-				    		<div class="col-sm-offset-1 col-sm-4">
+				    		<div class="col-sm-4">
 				    			<button type="submit" class="btn btn-primary addToCartButton center-block">Add to Cart</button>
 				    		</div>	
 				    	</div>

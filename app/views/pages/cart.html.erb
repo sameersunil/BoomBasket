@@ -55,7 +55,7 @@
 				<h4>Your total is &#8377;<%= number_with_precision(@total, :precision => 2, :delimiter => ',') %></h4>
 				<a data-toggle="modal" data-target="#login"><span class="btn btn-success">Log In</span></a>
 			<% else %>
-				<span class="glyphicon glyphicon-user"></span><%= " " + @user.email.split("@")[0].slice(0, 5).upcase %>
+				<span class="glyphicon glyphicon-user"></span><%= " " + @user.fname %>
 				<h3>Your total is &#8377;<%= number_with_precision(@total, :precision => 2, :delimiter => ',') %></h3>
 				<%= link_to orders_path, method:"post" do %>
 					<span class="btn btn-success">Place Order!</span>
@@ -63,6 +63,9 @@
 		</div>
 	<% end %>
 	<% else %>
-		<h3 class="text-center"><span class="label label-info">No Items in Cart!</span></h3>
+		<div class="alert alert-info fade in">
+  			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>No Items!</strong> in cart
+		</div>
 	<% end %>
 </div>

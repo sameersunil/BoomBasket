@@ -27,17 +27,17 @@
             <td>&#8377;<%= number_with_precision(product.price, :precision => 2, :delimiter => ',') %></td>
             <% if product.class.to_s == "Airplane" %>
               <%= form_for :cart, url: add_to_cart_path(prod: product.id, type: "MA"), class: "form-horizontal", remote: true do |f| %>
-                <td><%= f.text_field :qty, class: "form-control quantityTF", placeholder: "Qty" %></td>
+                <td><%= f.text_field :qty, class: "form-control quantityTF", placeholder: "Qty", type: "number", min: "1", max: "200" %></td>
                 <td><button type="submit" class="btn btn-primary addToCartButton">Add to Cart</button></td>
               <% end %>
             <% elsif product.class.to_s == "Part" %>
                 <%= form_for :cart, url: add_to_cart_path(prod: product.id, type: "MAP"), class: "form-horizontal", remote: true do |f| %>
-                <td><%= f.text_field :qty, class: "form-control quantityTF", placeholder: "Qty" %></td>
+                <td><%= f.text_field :qty, class: "form-control quantityTF", placeholder: "Qty", type: "number", min: "1", max: "200" %></td>
                 <td><button type="submit" class="btn btn-primary addToCartButton">Add to Cart</button></td>
               <% end %>
             <% elsif product.class.to_s == "Product" %>
                 <%= form_for :cart, url: add_to_cart_path(prod: product.id, type: "G"), class: "form-horizontal", remote: true do |f| %>
-                <td><%= f.text_field :qty, class: "form-control quantityTF", placeholder: "Qty" %></td>
+                <td><%= f.text_field :qty, class: "form-control quantityTF", placeholder: "Qty", type: "number", min: "1", max: "200" %></td>
                 <td><button type="submit" class="btn btn-primary addToCartButton">Add to Cart</button></td>
               <% end %> 
             <% end %>
@@ -46,6 +46,9 @@
         </tbody>
       </table>
     <% else %>
-      <h3 class="text-center"><span class="label label-info">No Results Found!</span></h3>
+      <div class="alert alert-info fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>No Results!</strong> found
+    </div>
     <% end %>
 </div>

@@ -43,5 +43,6 @@ class OrdersController < ApplicationController
         session[:count] = "0"
         order = Order.new email: @user.email, summary: summary, total: total
         order.save
+        redirect_to root_path(info: "Continue Shopping!")
 	end
 end

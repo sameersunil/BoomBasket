@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   	def search
+  		@user = current_user
   		@title = "Search"
 		if params[:q].nil?
 			@searchResults = []

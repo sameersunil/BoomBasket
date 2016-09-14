@@ -8,7 +8,10 @@
 	</ul>
     <h2><span class="glyphicon glyphicon-list-alt"></span> My Orders</h2>
     <% if @orders.size == 0 %>
-		<h3 class="text-center"><span class="label label-info">No Order History!</span></h3>
+		<div class="alert alert-info fade in">
+  			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>No Order!</strong> history
+		</div>
     <% else %>
     	<table class="table">
 			<thead>
@@ -25,7 +28,11 @@
 					<td><%= order.id %></td>
 					<td><%= order.updated_at.to_s(:db).split(" ")[0] %></td>
 					<td>&#8377;<%= number_with_precision(order.total, :precision => 2, :delimiter => ',') %></td>
-					<td><%= link_to "View", order_path(id: order.id), class: "btn btn-primary removeFromCartButton", method: "get" %></td>
+					<td>
+						<%= link_to order_path(id: order.id), class: "removeFromCartButton", method: "get" do %>
+							<h4><span class="glyphicon glyphicon-eye-open"></span></h4>
+						<% end %>
+					</td>
 				</tr>
 				<% end %>
 			</tbody>

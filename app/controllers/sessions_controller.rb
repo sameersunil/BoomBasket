@@ -27,7 +27,6 @@ class SessionsController < ApplicationController
 
   def addToCart
     prefix = params[:type].nil? ? "G" : params[:type]
-    params[:cart][:qty] = checkQty params[:cart][:qty]
     if session[prefix + params[:prod]].nil?
         session[:count] = (session[:count].to_i + 1).to_s
         session[prefix + params[:prod]] = params[:prod]  + ":" + params[:cart][:qty]
