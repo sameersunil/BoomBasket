@@ -6,16 +6,28 @@
 		<li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
 		<li><%= link_to "Model Airplanes", airplanes_path(page: "1") %></li>
 	</ul>
-	<div class="jumbotron">
-	    <h2>Order ID : <%= @orderID %></h2>
-	</div>
-	<% @productsList.each_index do |i| %>
-		<div class="row">
-			<div class="col-sm-2"><%= image_tag @productsList[i].img_url, class: "thumbnail", size: "50" %></div>
-			<div class="col-sm-2 text-center"><h4><%= @productsList[i].name %></h4></div>
-			<div class="col-sm-2 text-center"><h4>Rs <%= @productsList[i].price %></h4></div>
-			<div class="col-sm-2 text-center"><h4><%= @quantityList[i] %></h4></div>
-			<div class="col-sm-2 text-center"><h4>Rs <%= @quantityList[i].to_i * @productsList[i].price %></h4></div>
-		</div>
-	<% end %>
+	<h2><span class="glyphicon glyphicon-list-alt"></span> Order <%= @orderID %></h2>
+	<table class="table">
+	    <thead>
+	      <tr>
+	        <th>Item</th>
+	        <th>Price</th>
+	        <th>Quantity</th>
+	        <th>Total</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	<% @productsList.each_index do |i| %>
+		      	<tr>
+			        <td>
+			        	<%= @productsList[i].name %>
+			        	<%= image_tag @productsList[i].img_url, class: "thumbnail", size: "50" %>
+			        </td>
+			        <td>&#8377;<%= number_with_precision(@productsList[i].price, :precision => 2, :delimiter => ',') %></td>
+			        <td><%= @quantityList[i] %></td>
+			        <td>&#8377;<%= @quantityList[i].to_i * @productsList[i].price %></td>
+	      		</tr>
+	      <% end %>
+	    </tbody>
+	</table>
 </div>

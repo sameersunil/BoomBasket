@@ -6,19 +6,29 @@
 		<li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
 		<li><%= link_to "Model Airplanes", airplanes_path(page: "1") %></li>
 	</ul>
-    <div class="jumbotron">
-        <h2>My Orders</h2>
-    </div>
+    <h2><span class="glyphicon glyphicon-list-alt"></span> My Orders</h2>
     <% if @orders.size == 0 %>
 		<h3 class="text-center"><span class="label label-info">No Order History!</span></h3>
     <% else %>
-    	<% @orders.each do |order| %>
-			<div class="row">
-				<div class="col-sm-2 text-center"><h4><%= order.id %></h4></div>
-				<div class="col-sm-2 text-center"><h4><%= order.updated_at.to_s(:db).split(" ")[0] %></h4></div>
-				<div class="col-sm-2 "><h4>Rs <%= order.total %></h4></div>
-				<div class="col-sm-6 text-center"><%= link_to "View", order_path(id: order.id), class: "btn btn-primary removeFromCartButton", method: "get" %></div>
-			</div>
-		<% end %>
+    	<table class="table">
+			<thead>
+				<tr>
+					<th>Order ID</th>
+					<th>Date</th>
+					<th>Total</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @orders.each do |order| %>
+				<tr>
+					<td><%= order.id %></td>
+					<td><%= order.updated_at.to_s(:db).split(" ")[0] %></td>
+					<td>&#8377;<%= number_with_precision(order.total, :precision => 2, :delimiter => ',') %></td>
+					<td><%= link_to "View", order_path(id: order.id), class: "btn btn-primary removeFromCartButton", method: "get" %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
 	<% end %>
 </div>

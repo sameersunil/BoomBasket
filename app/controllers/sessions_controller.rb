@@ -1,4 +1,4 @@
-  class SessionsController < ApplicationController
+class SessionsController < ApplicationController
 	include SessionsHelper
 
 	def new
@@ -27,12 +27,21 @@
 
   def addToCart
     prefix = params[:type].nil? ? "G" : params[:type]
+    params[:cart][:qty] = checkQty params[:cart][:qty]
     if session[prefix + params[:prod]].nil?
         session[:count] = (session[:count].to_i + 1).to_s
-        session[prefix + params[:prod]] = params[:prod]  + ":" + (verifyQty params[:cart][:qty])
+        session[prefix + params[:prod]] = params[:prod]  + ":" + params[:cart][:qty]
     else
         prevQty = session[prefix + params[:prod]].split(":")[1]
-        session[prefix + params[:prod]] = params[:prod]  + ":" + ((verifyQty params[:cart][:qty]).to_i + prevQty.to_i).to_s
+        session[prefix + params[:prod]] = params[:prod]  + ":" + (params[:cart][:qty].to_i + prevQty.to_i).to_s
+    end
+    case params[:type]
+    when "G" 
+        @productName = Product.find(params[:prod]).name
+    when "MA"
+        @productName = Airplane.find(params[:prod]).name
+    when "MAP"
+        @productName = Part.find(params[:prod]).name
     end
     respond_to do |format|
       format.js

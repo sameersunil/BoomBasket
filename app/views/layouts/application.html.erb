@@ -9,40 +9,45 @@
 		<%= javascript_include_tag 'application' %>
 		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' %>
 		<%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
+		<%= javascript_include_tag 'notify.min.js' %>
 
 		<title><%= title %></title>
 
 		<%= csrf_meta_tag %>
-		
+
 		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 	</head>
 	<body>
-		<div class = "navbar navbar-default" data-spy="affix">
-	  		<div class="container-fluid">
+		<nav class = "navbar navbar-default">
+			<div class="container-fluid">
 	      		<div class = "navbar-header">
 	        		<%= link_to root_path, class: "navbar-brand" do %>
 	        			<span class="glyphicon glyphicon-home"></span> <span class = "glyphicon glyphicon-bold">oom</span><span class = "glyphicon glyphicon-bold">asket</span>
 	        		<% end %>
 	      		</div>
-	      		<ul class="nav navbar-nav navbar-left">
-	      		</ul>
 	      		<ul class="nav navbar-nav navbar-right">
 	        		<li><a href=<%= cart_path %>><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge" id="cartCount"><%= session[:count] %></span></a></li>
 	        		<%= render "sessions/login" %>
-	        		<li id="account">
-		        		<% if @user.nil? %>
+	        		<%= render "sessions/signUp" %>
+		        	<% if @user.nil? %>
+		        		<li id="signUpIcon">	
+		        			<a href="#" data-toggle="modal" data-target="#signUp"><span class="glyphicon glyphicon-send"></span> Sign Up</a>
+		        		</li>
+		        		<li id="loginIcon">	
 		        			<a href="#" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+		        		</li>
 		        		<% else %>
-		        			 <a data-toggle="dropdown" type = "button">
-							  	<span class="glyphicon glyphicon-user"><%=@user.email.split("@")[0].slice(0, 5).upcase%></span>
-							  		<ul class="dropdown-menu">
-									    <li><a href=<%= orders_path %>>Orders</a></li>
-									    <li><a href=<%= sign_out_path %>>Logout</a></li>
-							  		</ul>
+		        		<li>
+		        			<a data-toggle="dropdown" type = "button">
+		        				<span class="glyphicon glyphicon-user"><%=@user.email.split("@")[0].slice(0, 5).upcase%></span>
+						  		<ul class="dropdown-menu">
+								    <li><a href=<%= orders_path %>>Orders</a></li>
+								    <li><a href=<%= sign_out_path %>>Logout</a></li>	
+						  		</ul>
 							 </a>  
+		        		</li>
 		        		<% end %>
-		        	</li>
 	      		</ul>
 			    <form action=<%= search_path %> class="navbar-form navbar-right" role="search">
 	        		<div class="input-group">
@@ -52,7 +57,10 @@
 	              		</div>
 	        		</div>
 				</form>
-	    	</div>
+			</div>
+	    </nav>
+	    <div class="container" id="signUpSuccessfull">
+		    
 		</div>
 		<%= yield %>
 	</body>

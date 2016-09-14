@@ -8,10 +8,8 @@ class Product < ApplicationRecord
 	validates :img_url, :presence => true
 
 	def as_indexed_json(options={})
-    as_json(
-      only: [:name]
-      )
-  end
+    	as_json(only: [:name])
+  	end
 end
 
 Product.import	

@@ -9,8 +9,8 @@ module SessionsHelper
 		current_user= nil
 	end
 
-	def verifyQty qty
-		if not /[1-9][0-9]*/.match(qty).nil?
+	def checkQty qty
+		if not /^[1-9][0-9]*/.match(qty).nil?
 			return qty
 		else
 			return "1"

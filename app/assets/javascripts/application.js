@@ -14,29 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-
-$(function(){
-	var cartCount = localStorage.getItem("count");
-
-	if(cartCount == null){
-		localStorage.setItem("count", "0");
-	}
-
-	$(".addToCartButton").click(function(){
-		var count = parseInt(localStorage.get("count"));
-		$("#cartCount").html((count + 1) + "");
-		console.log((count + 1) + "");
-		alert("Fuck");
-	});
-
-	$(".removeFromCartButton").click(function(){
-		var cartCount = parseInt(readCookie("cartCount"));
-		if(cartCount != null){
-			if(cartCount != 0){
-				createCookie("cartCount", 1, parseInt(readCookie("cartCount")) - 1);
-				$("#cartCount").html(readCookie("cartCount"));
-			}
-		}
-	});
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
 });

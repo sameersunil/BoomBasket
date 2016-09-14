@@ -8,12 +8,12 @@
       <%= form_for :session, url: sessions_path(go: @go), class: "form-horizontal", remote: true do |f| %>
         <div class="modal-body">
           <div class="row form-group">
-            <label class="control-label col-sm-2" for="email">Email:</label>
+            <label class="control-label col-sm-2" for="email">Email</label>
             <div class="col-sm-10">
               <%= f.text_field :email, class: "form-control", id: "emailTextField", placeholder: "Enter email" %>            </div>
           </div>
           <div class="row form-group">
-            <label class="control-label col-sm-2" for="pwd">Password:</label>
+            <label class="control-label col-sm-2" for="pwd">Password</label>
             <div class="col-sm-10">
               <%= f.password_field :pwd, class: "form-control", id: "pwdTextField" , placeholder: "Enter password" %>
             </div>
@@ -23,7 +23,7 @@
           </div>
         </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success">Login</button>
       </div>
       <% end %>
     </div>

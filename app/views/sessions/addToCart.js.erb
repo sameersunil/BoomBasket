@@ -1,2 +1,4 @@
 $("#cartCount").html('<%= j session[:count] %>');
+$.notify.defaults({ className: "success" });
+$.notify("<%= j @productName %> was added!", { position:"bottom center" });
 $('.quantityTF').val("");

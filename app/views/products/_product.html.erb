@@ -1,19 +1,27 @@
-<div class="col-sm-4">
-	<div class="panel panel-default">
-  		<div class="panel-body">
-  			<h4 class="lead"><%= product.name %></h4>
-			<%= image_tag product.img_url , class: "center-block fullImageTile", size: "150" %>
-			<h4>Rs <%= product.price %></h4>
-			<%= form_for :cart, url: add_to_cart_path(prod: product.id), class: "form-horizontal", remote: true do |f| %>
-				<div class = "row">
-					<div class="col-sm-3">
-						<%= f.text_field :qty, class: "form-control quantityTF", placeholder: "Qty" %>
-				    </div>
-				    <div class="col-sm-4 pull-right">
-				    	<button type="submit" class="btn btn-primary addToCartButton " data-toggle="modal" data-target="#productAdded">Add to Cart</button>
-					</div>
-				</div>
-			<% end %>
+<div class="col-sm-3">
+	<div class="panel-body">
+		<div class="row">
+			<div class="text-center col-sm-12 label label-primary"><%= product.name %></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 label label-primary">&#8377;<%= number_with_precision(product.price, :precision => 2, :delimiter => ',') %></div>
+		</div>
+		<div class="row">
+			<div class="productImage col-sm-12" style="background-image: url(<%= product.img_url %>);">
+				<%= form_for :cart, url: add_to_cart_path(prod: product.id, type: "G"), class: "form-horizontal", style: "vertical-align: bottom;", remote: true do |f| %>
+						<div class="row">
+							<div class="emptyDiv"></div>
+						</div>
+						<div class = "row">
+							<div class="col-sm-offset-1 col-sm-4">
+								<%= f.text_field :qty, class: 'form-control quantityTF', placeholder: "Qty" %>
+							</div>
+				    		<div class="col-sm-offset-1 col-sm-4">
+				    			<button type="submit" class="btn btn-primary addToCartButton center-block">Add to Cart</button>
+				    		</div>	
+				    	</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

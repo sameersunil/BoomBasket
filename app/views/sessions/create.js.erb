@@ -5,6 +5,7 @@
 	$("#emailTextField").focus();
 <% else %>
 	$('#login').modal('hide');
-	$('#account').html('<a data-toggle="dropdown" type = "button"><span class="glyphicon glyphicon-user"><%=@user.email.split("@")[0].slice(0, 5).upcase%></span><ul class="dropdown-menu"><li><a href=<%= orders_path %>>Orders</a></li><li><a href=<%= sign_out_path %>>Logout</a></li></ul></a>');
-	$('#cartFooterInfo').html('<span class="glyphicon glyphicon-user"></span><%= " " + @user.email.split("@")[0].slice(0, 5).upcase %><h3>Your total is Rs <%= @total %></h3><%= link_to orders_path, method:"post" do %><span class="btn btn-success">Place Order!</span><% end %>');
+	$('#loginIcon').html('<a data-toggle="dropdown" type = "button"><span class="glyphicon glyphicon-user"><%= @user.fname %></span><ul class="dropdown-menu"><li><a href=<%= orders_path %>>Orders</a></li><li><a href=<%= sign_out_path %>>Logout</a></li></ul></a>');
+	$('#signUpIcon').html('');
+	$('#cartFooterInfo').html('<span class="glyphicon glyphicon-user"></span><%= " " + @user.fname %><h3>Your total is Rs <%= @total %></h3><%= link_to orders_path, method:"post" do %><span class="btn btn-success">Place Order!</span><% end %>');
 <% end %>
