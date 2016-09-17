@@ -1,4 +1,4 @@
 $("#cartCount").html('<%= j session[:count] %>');
 $.notify.defaults({ className: "success" });
-$.()toastmessage('showNoticeToast', 'some message here');
+$('#<%= @product.id %>').notify("Added to Cart!");
 $('.quantityTF').val("1");

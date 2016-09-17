@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 		if @statusCode.size == 0
 			@user = User.create email: email, fname: fName, lname: lName, pwd: pwd, country: country
 			sign_in @user
+			redirect_to root_path(info: "Signup Complete!")
 		end
 		respond_to do |format|
 			format.js

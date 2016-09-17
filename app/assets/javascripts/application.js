@@ -15,5 +15,8 @@
 //= require turbolinks
 //= require_tree .
 $(document).ready(function(){
-    $('[data-toggle="popover"]').popover();   
 });
+
+function hideLogin(){
+	$('#login').modal('toggle');
+}

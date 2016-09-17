@@ -1,4 +1,4 @@
-<div id="login" class="modal fade" role="dialog">
+<div id="login" class="modal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,7 +10,8 @@
           <div class="row form-group">
             <label class="control-label col-sm-2" for="email">Email</label>
             <div class="col-sm-10">
-              <%= f.text_field :email, class: "form-control", id: "emailTextField", placeholder: "Enter email" %>            </div>
+              <%= f.text_field :email, class: "form-control", id: "emailTextField", placeholder: "Enter email" %>
+            </div>
           </div>
           <div class="row form-group">
             <label class="control-label col-sm-2" for="pwd">Password</label>
@@ -18,14 +19,19 @@
               <%= f.password_field :pwd, class: "form-control", id: "pwdTextField" , placeholder: "Enter password" %>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-offset-2 col-sm-10" id="wrongLoginInfo"><h4><span class="label label-danger">Oops! Wrong Credentials</span></h4></div>
+          <div class="text-center" id="wrongLoginInfo">
+            <h4><span class="label label-danger">Oops! Wrong Credentials</span></h4>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-success">Login</button>
           </div>
         </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Login</button>
-      </div>
       <% end %>
+      <div class="modal-footer">
+          <div class="text-center">
+            New to BoomBasket? <button class="btn btn-primary" data-toggle="modal" data-target="#signUp" onclick="hideLogin()">Sign Up</button>
+          </div> 
+      </div>
     </div>
   </div>
 </div>

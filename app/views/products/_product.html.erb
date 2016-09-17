@@ -17,7 +17,7 @@
 								<%= f.text_field :qty, class: 'form-control quantityTF', placeholder: "Qty", value: "1", type: "number", min: "1", max: "200" %>
 							</div>
 				    		<div class="col-sm-4">
-				    			<button type="submit" class="btn btn-primary addToCartButton center-block">Add to Cart</button>
+				    			<button type="submit" class="btn btn-primary addToCartButton center-block" id = "<%= product.id %>">Add to Cart</button>
 				    		</div>	
 				    	</div>
 				<% end %>

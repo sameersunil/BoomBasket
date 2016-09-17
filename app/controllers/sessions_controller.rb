@@ -36,11 +36,11 @@ class SessionsController < ApplicationController
     end
     case params[:type]
     when "G" 
-        @productName = Product.find(params[:prod]).name
+        @product = Product.find(params[:prod])
     when "MA"
-        @productName = Airplane.find(params[:prod]).name
+        @product = Airplane.find(params[:prod])
     when "MAP"
-        @productName = Part.find(params[:prod]).name
+        @product = Part.find(params[:prod])
     end
     respond_to do |format|
       format.js

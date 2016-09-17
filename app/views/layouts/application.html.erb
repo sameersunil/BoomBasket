@@ -7,7 +7,7 @@
 		<%= stylesheet_link_tag 'application', :media => 'screen' %>
 		<%= stylesheet_link_tag 'jquery.toastmessage.css', :media => 'screen' %>
 		<%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', :media => 'screen' %>
-		<%= javascript_include_tag 'application' %>
+		<%= javascript_include_tag 'application.js' %>
 		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' %>
 		<%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
 		<%= javascript_include_tag 'notify.min.js' %>
@@ -22,7 +22,9 @@
 
 	</head>
 	<body>
-		<nav class = "navbar navbar-default">
+		<%= render "sessions/login" %>
+	  <%= render "sessions/signUp" %>
+		<nav class = "navbar navbar-default" id="nav">
 			<div class="container-fluid">
 	      		<div class = "navbar-header">
 	        		<%= link_to root_path, class: "navbar-brand" do %>
@@ -31,8 +33,6 @@
 	      		</div>
 	      		<ul class="nav navbar-nav navbar-right">
 	        		<li><a href=<%= cart_path %>><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge" id="cartCount"><%= session[:count] %></span></a></li>
-	        		<%= render "sessions/login" %>
-	        		<%= render "sessions/signUp" %>
 		        	<% if @user.nil? %>
 		        		<li id="signUpIcon">	
 		        			<a href="#" data-toggle="modal" data-target="#signUp"><span class="glyphicon glyphicon-send"></span> Sign Up</a>
@@ -50,7 +50,7 @@
 						  		</ul>
 							 </a>  
 		        		</li>
-		        		<% end %>
+		        	<% end %>
 	      		</ul>
 			    <form action=<%= search_path %> class="navbar-form navbar-right" role="search">
 	        		<div class="input-group">
@@ -62,15 +62,22 @@
 				</form>
 			</div>
 	    </nav>
-	    <% if not params[:info].nil? %>
-		    <div class="container" id="signUpSuccessfull">
+		<div class="container" id="alertContainer">
+		    <% if not params[:info].nil? %>
 		    	<% if params[:info] == "Continue Shopping!" %>
 			    	<div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			    	<strong>Order Placed!</strong> <%= params[:info] %>
+			    	<strong>Order Placed!</strong> successfully.
+			    	</div>
+			    <% elsif params[:info] == "Signup Complete!" %>
+			    	<div class="alert alert-success fade in">
+			    		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Welcome! </strong><%= @user.fname  + " " + @user.lname %> to BoomBasket.
 			    	</div>
 			    <% end %>
-			</div>
-		<% end %>
+			<% end %>
+		</div>
 		<%= yield %>
+		<footer class="container-fluid text-center">
+		  <p>Online Store Copyright</p>
+		</footer>
 	</body>
 </html>

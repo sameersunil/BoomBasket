@@ -1,7 +1,7 @@
-	<div class="container">
+<div class="container">
 	<ul class="nav nav-pills well well-sm">
 		<li><%= link_to "Household", products_path(category: "Household", page: "1") %></li>
-		<li><%= link_to "Perosnal Care", products_path(category: "Personal Care", page: "1") %></li>
+		<li><%= link_to "Personal Care", products_path(category: "Personal Care", page: "1") %></li>
 		<li><%= link_to "Beverages", products_path(category: "Beverages", page: "1") %></li>
 		<li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
 		<li><%= link_to "Model Airplanes", airplanes_path(page: "1") %></li>
@@ -49,17 +49,21 @@
 		      	<% end %>
 		    </tbody>
 	  	</table>
-		<div class="well well-sm" id="cartFooterInfo">	
+		<div class="well well-sm">	
 			<% if @user.nil? %>
-				<span class="glyphicon glyphicon-user lable lable-warning"></span> GUEST
+				<span class="glyphicon glyphicon-user lable lable-warning" id="cartFooterUserName">Guest</span>
 				<h4>Your total is &#8377;<%= number_with_precision(@total, :precision => 2, :delimiter => ',') %></h4>
-				<a data-toggle="modal" data-target="#login"><span class="btn btn-success">Log In</span></a>
+				<div id="cartFooterButton">
+					<a data-toggle="modal" data-target="#login"><span class="btn btn-success">Proceed</span></a>
+				</div>
 			<% else %>
-				<span class="glyphicon glyphicon-user"></span><%= " " + @user.fname %>
-				<h3>Your total is &#8377;<%= number_with_precision(@total, :precision => 2, :delimiter => ',') %></h3>
-				<%= link_to orders_path, method:"post" do %>
-					<span class="btn btn-success">Place Order!</span>
-				<% end %>
+				<span class="glyphicon glyphicon-user" id="cartFooterUserName"><%= @user.fname %></span>
+				<h4>Your total is &#8377;<%= number_with_precision(@total, :precision => 2, :delimiter => ',') %></h4>
+				<div id="cartFooterButton">
+					<%= link_to orders_path, method:"post" do %>
+						<span class="btn btn-success">Place Order</span>
+					<% end %>
+				</div>
 		</div>
 	<% end %>
 	<% else %>
@@ -68,4 +72,5 @@
   			<strong>No Items!</strong> in cart
 		</div>
 	<% end %>
+</div>
 </div>
