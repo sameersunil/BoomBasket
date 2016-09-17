@@ -10,13 +10,25 @@ class AirplanesController < ApplicationController
 		redirect_to new_airplane_path 
 	end
 
-	def index
-		@user = current_user
-		@category = @title 
+	def paginate
 		@pageNum = params[:page].to_i
-		@perPage = 15
+		@perPage = 12
 		@pageCount = getPageNum @perPage
-		@airplanes = Airplane.limit(@perPage).offset((@pageNum - 1) * @perPage)
+		@products = Product.where(cat: @category).limit(@perPage).offset((@pageNum - 1) * @perPage)
+		@nextPage = getNextPageNum @pageNum, @pageCount
+		@prevPage = getPrevPageNum @pageNum
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def index
+		@title = "Model Airplanes"
+		@user = current_user
+		@pageNum = params[:page].to_i
+		@perPage = 12
+		@pageCount = getPageNum @perPage
+		@airplanes = Airplane.limit(@perPage).order(:name).offset((@pageNum - 1) * @perPage)
 		@nextPage = getNextPageNum @pageNum, @pageCount
 		@prevPage = getPrevPageNum @pageNum
 	end

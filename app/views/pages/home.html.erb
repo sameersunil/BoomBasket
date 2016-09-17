@@ -38,68 +38,10 @@
     </br>
     <div class="row">
         <div class="col-sm-6">
-            <div id="videoGamesCarousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#videoGamesCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#videoGamesCarousel" data-slide-to="1"></li>
-                    <li data-target="#videoGamesCarousel" data-slide-to="2"></li>
-                    <li data-target="#videoGamesCarousel" data-slide-to="3"></li>
-                </ol>
-                <div class="carousel-inner"role="listbox">
-                    <div class="item active">
-                        <div><%= link_to (image_tag "videoGamesBanner.jpg", class: "center-block fullImagesHomePage"), products_path(category: "Video Games", page: "1") %></div>
-                    </div>
-                    <div class="item">
-                        <div><%= link_to (image_tag "nfs2K16.jpg",class: "center-block fullImagesHomePage"), products_path(category: "Video Games", page: "1") %></div>
-                    </div>
-                    <div class="item">
-                        <div><%= link_to (image_tag "CODIWF.jpg",class: "center-block fullImagesHomePage"), products_path(category: "Video Games", page: "1") %></div>
-                    </div>
-                    <div class="item">
-                        <div><%= link_to (image_tag "assasinsCreed.jpg",class: "center-block fullImagesHomePage"), products_path(category: "Video Games", page: "1") %></div>
-                    </div>
-                </div>
-                <a class="left carousel-control" href="#videoGamesCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#videoGamesCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+            <div><%= link_to (image_tag "videoGamesBanner.jpg", class: "center-block fullImagesHomePage"), products_path(category: "Video Games", page: "1") %></div>
         </div>
         <div class="col-sm-6">
-            <div id="modelAirplaneCarousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#modelAirplaneCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#modelAirplaneCarousel" data-slide-to="1"></li>
-                    <li data-target="#modelAirplaneCarousel" data-slide-to="2"></li>
-                    <li data-target="#modelAirplaneCarousel" data-slide-to="3"></li>
-                </ol>
-                <div class="carousel-inner"role="listbox">
-                    <div class="item active">
-                        <div><%= link_to (image_tag "modelAirplaneBanner.jpg", class: "center-block fullImagesHomePage"), airplanes_path(category: "Video Games", page: "1") %></div>
-                    </div>
-                    <div class="item">
-                        <div><%= link_to (image_tag "f22.jpg",class: "center-block fullImagesHomePage"), airplanes_path(category: "Video Games", page: "1") %></div>
-                    </div>
-                    <div class="item">
-                        <div><%= link_to (image_tag "su35.jpg",class: "center-block fullImagesHomePage"), airplanes_path(category: "Video Games", page: "1") %></div>
-                    </div>
-                    <div class="item">
-                        <div><%= link_to (image_tag "typhoon.png",class: "center-block fullImagesHomePage"), airplanes_path(category: "Video Games", page: "1") %></div>
-                    </div>
-                </div>
-                <a class="left carousel-control" href="#modelAirplaneCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#modelAirplaneCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+            <div><%= link_to (image_tag "su35.jpg",class: "center-block fullImagesHomePage"), airplanes_path(category: "Video Games", page: "1") %></div>   
         </div>
     </div>
 </div>

@@ -11,15 +11,15 @@
 		<%= render @airplanes %>
 	</div>
   <h3 class="text-center">
-    <%= link_to paginate_path(category: @category, page: @prevPage), id: "prevButton", method: "post", remote: true do %>
+    <%= link_to paginate_path(page: @prevPage), id: "prevButton", method: "post", remote: true do %>
       <button type="button" class="btn btn-disabled" disabled><span class = "glyphicon glyphicon-chevron-left"></span> Prev</button>
     <% end %>
     <% if @nextPage == "" %>
-      <%= link_to paginate_path(category: @category, page: @nextPage), id: "nextButton", method: "post", remote: true do %>
+      <%= link_to paginate_path(page: @nextPage), id: "nextButton", method: "post", remote: true do %>
         <button type="button" class="btn btn-disabled" disabled>Next  <span class = "glyphicon glyphicon-chevron-right"></span></button>
       <% end %>
     <% else %>
-      <%= link_to paginate_path(category: @category, page: @nextPage), id: "nextButton", method: "post", remote: true do %>
+      <%= link_to paginate_path(page: @nextPage), id: "nextButton", method: "post", remote: true do %>
       <button type="button" class="btn btn-primary">Next  <span class = "glyphicon glyphicon-chevron-right"></span></button>
     <% end %>
     <% end %>

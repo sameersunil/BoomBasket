@@ -4,4 +4,11 @@
 	$('#loginIcon').html('<a data-toggle="dropdown" type = "button"><span class="glyphicon glyphicon-user"><%= @user.fname %></span><ul class="dropdown-menu"><li><a href=<%= orders_path %>>Orders</a></li><li><a href=<%= sign_out_path %>>Logout</a></li></ul></a>');
 	$('#signUpIcon').html('');
 	$('#cartFooterInfo').html('<span class="glyphicon glyphicon-user"></span><%= " " + @user.fname %><h3>Your total is Rs <%= @total %></h3><%= link_to orders_path, method:"post" do %><span class="btn btn-success">Place Order!</span><% end %>');
+<% else %>
+	<% @statusCode.each do |status| %>
+		<% case status %>
+		<% when "E" %>
+			$('#emailTextField').html("Please enter an email!");
+		<% end %>
+	<% end %>	
 <% end %>

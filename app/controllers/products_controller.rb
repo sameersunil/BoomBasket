@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 		@pageNum = params[:page].to_i
 		@perPage = 12
 		@pageCount = getPageNum @perPage
-		@products = Product.where(cat: @category).limit(@perPage).offset((@pageNum - 1) * @perPage)
+		@products = Product.where(cat: @category).order(:name).limit(@perPage).offset((@pageNum - 1) * @perPage)
 		@nextPage = getNextPageNum @pageNum, @pageCount
 		@prevPage = getPrevPageNum @pageNum
 	end

@@ -1,5 +1,6 @@
 <div class="col-sm-4">
-	<div id="<%= 'airplanesCarousel' + airplane.id.to_s %>" class="carousel slide" data-ride="carousel">
+<div class="row">
+	<div id="<%= 'airplanesCarousel' + airplane.id.to_s %>" class="carousel slide" data-ride="carousel" data-interval="false">
         <ol class="carousel-indicators">
             <li data-target="<%= '#airplanesCarousel' + airplane.id.to_s %>" data-slide-to="0" class="active"></li>
             <% (0..airplane.parts.count - 1).each do |i| %>
@@ -32,13 +33,13 @@
                     </div>
                 </div>
             </div>
-        	<% airplane.parts.each do |part| %>
+        	<% airplane.parts.order(:name).each do |part| %>
             	<div class="item">
                     <div class="row">
                         <div class="text-center col-sm-12 label label-primary"><%= part.name %></div>
                     </div>
                     <div class="row">
-                        <div class="text-center col-sm-12 label label-primary">&#8377; <%= part.price %></div>
+                        <div class="text-center col-sm-12 label label-primary">&#8377;<%= number_with_precision(part.price, :precision => 2, :delimiter => ',') %></div>
                     </div>
                     <div class="row">
                         <div class="productImage col-sm-12" style="background-image: url(<%= part.img_url %>);">
@@ -69,4 +70,5 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+</div>
 </div>

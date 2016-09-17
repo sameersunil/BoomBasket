@@ -11,22 +11,22 @@ class UsersController < ApplicationController
 		pwdR = params[:user][:pwdr]
 		country = params[:user][:country]
 		@statusCode = []
-		if email.nil?
+		if email == ""
 			@statusCode.push("E")
 		end
-		if fName.nil?
+		if fName == ""
 			@statusCode.push("F")
 		end
-		if lName.nil?
+		if lName == ""
 			@statusCode.push("L")
 		end
-		if country.nil?
+		if country == ""
 			@statusCode.push("C")
 		end
-		if pwd.nil?
+		if pwd == ""
 			@statusCode.push("P")
 		end
-		if pwdR.nil?
+		if pwdR == ""
 			@statusCode.push("R")
 		end
 		if pwd != pwdR

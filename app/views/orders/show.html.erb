@@ -25,7 +25,7 @@
 			        </td>
 			        <td>&#8377;<%= number_with_precision(@productsList[i].price, :precision => 2, :delimiter => ',') %></td>
 			        <td><%= @quantityList[i] %></td>
-			        <td>&#8377;<%= @quantityList[i].to_i * @productsList[i].price %></td>
+			        <td>&#8377;<%= number_with_precision(@quantityList[i].to_i * @productsList[i].price, :precision => 2, :delimiter => ',') %></td>
 	      		</tr>
 	      <% end %>
 	    </tbody>
