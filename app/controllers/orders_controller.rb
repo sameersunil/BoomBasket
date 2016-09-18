@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
 	def index
 		@title = "Orders"
 		@user = current_user
-		@orders = Order.where email: @user.email
+		@orders = Order.where(email: @user.email).order(created_at: :desc)
 	end
 
 	def create

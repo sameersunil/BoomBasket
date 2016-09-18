@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
 	def show
 	end
+
 	def create
 		email = params[:user][:email]
 		fName = params[:user][:fname]
@@ -10,33 +11,21 @@ class UsersController < ApplicationController
 		pwd = params[:user][:pwd]
 		pwdR = params[:user][:pwdr]
 		country = params[:user][:country]
+
 		@statusCode = []
-		if email == ""
-			@statusCode.push("E")
+
+		if not User.find_by_email(email).nil?
+			@statusCode.push("User exists")
 		end
-		if fName == ""
-			@statusCode.push("F")
-		end
-		if lName == ""
-			@statusCode.push("L")
-		end
-		if country == ""
-			@statusCode.push("C")
-		end
-		if pwd == ""
-			@statusCode.push("P")
-		end
-		if pwdR == ""
-			@statusCode.push("R")
-		end
-		if pwd != pwdR
-			@statusCode.push("M")
-		end
+		
 		if @statusCode.size == 0
-			@user = User.create email: email, fname: fName, lname: lName, pwd: pwd, country: country
-			sign_in @user
-			redirect_to root_path(info: "Signup Complete!")
+			@user = User.new email: email, fname: fName, lname: lName, pwd: pwd, country: country
+			if @user.save
+				sign_in @user
+				redirect_to root_path(info: "Signup Complete!")
+			end
 		end
+		
 		respond_to do |format|
 			format.js
 		end

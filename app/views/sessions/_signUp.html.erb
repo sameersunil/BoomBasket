@@ -5,48 +5,45 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Sign Up</h4>
       </div>
-      <%= form_for :user, url: users_path, class: "form-horizontal", remote: true do |f| %>
+      <%= form_for :user, url: users_path, class: "form-horizontal", remote: true, id: "signUpForm" do |f| %>
         <div class="modal-body">
           <div class="row form-group">
             <label class="control-label col-sm-4" for="email">Email</label>
             <div class="col-sm-8">
-              <%= f.text_field :email, class: "form-control", id: "emailTextField", placeholder: "Email", required: true %>            </div>
+              <%= f.text_field :email, class: "form-control", id: "email", placeholder: "Email" %>            </div>
           </div>
           <div class="row form-group">
             <label class="control-label col-sm-4" for="email">First Name</label>
             <div class="col-sm-8">
-              <%= f.text_field :fname, class: "form-control", id: "fNameTextField", placeholder: "First Name", required: true %>            </div>
+              <%= f.text_field :fname, class: "form-control", id: "fname", placeholder: "First Name" %>            </div>
           </div>
           <div class="row form-group">
             <label class="control-label col-sm-4" for="email">Last Name</label>
             <div class="col-sm-8">
-              <%= f.text_field :lname, class: "form-control", id: "lNameTextField", placeholder: "Last Name", required: true %>            </div>
+              <%= f.text_field :lname, class: "form-control", id: "lname", placeholder: "Last Name" %>            </div>
           </div>
           <div class="row form-group">
             <label class="control-label col-sm-4" for="pwd">Password</label>
             <div class="col-sm-8">
-              <%= f.password_field :pwd, class: "form-control", id: "pwdTextField" , placeholder: "Password", required: true %>
+              <%= f.password_field :pwd, class: "form-control", id: "pwd" , placeholder: "Password" %>
             </div>
           </div>
           <div class="row form-group">
-            <label class="control-label col-sm-4" for="pwd">Renter Password</label>
+            <label class="control-label col-sm-4" for="pwd">Re-enter Password</label>
             <div class="col-sm-8">
-              <%= f.password_field :pwdr, class: "form-control", id: "pwdTextFieldR" , placeholder: "Renter Password", required: true %>
+              <%= f.password_field :pwdr, class: "form-control", id: "pwdR" , placeholder: "Renter Password" %>
             </div>
           </div>
           <div class="row form-group">
             <label class="control-label col-sm-4" for="pwd">Country</label>
             <div class="col-sm-8">
-              <%= f.text_field :country, class: "form-control", id: "countryTextField" , placeholder: "Country", required: true %>
+              <%= f.text_field :country, class: "form-control", id: "country" , placeholder: "Country" %>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-offset-2 col-sm-10" id="wrongLoginInfo"><h4><span class="label label-danger">Oops! Wrong Credentials</span></h4></div>
-          </div>
         </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Sign Up</button>
-      </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" id="signUpButton">Sign Up</button>
+        </div>
       <% end %>
     </div>
   </div>

@@ -1,4 +1,3 @@
 $("#cartCount").html('<%= j session[:count] %>');
-$.notify.defaults({ className: "success" });
-$('#<%= @product.id %>').notify("Added to Cart!");
+$('#<%= @product.id %>').notify("Added to Cart!", "success");
 $('.quantityTF').val("1");

@@ -1,5 +1,5 @@
 <% if @user.nil? %>
-	$("#wrongLoginInfo").show();
+	$("#wrongLoginInfo").notify("Oops! Wrong Credentials", { position:"right" });
 	$("#emailTextField").val("");
 	$("#pwdTextField").val("");
 	$("#emailTextField").focus();
@@ -8,5 +8,6 @@
 	$('#loginIcon').html('<a data-toggle="dropdown" type = "button"><span class="glyphicon glyphicon-user"><%= @user.fname %></span><ul class="dropdown-menu"><li><a href=<%= orders_path %>><span class="glyphicon glyphicon-list-alt"></span> Orders</a></li><li><a href=<%= sign_out_path %>><span class="glyphicon glyphicon-log-out"></span> Logout</a></li></ul></a>');
 	$('#signUpIcon').html('');
 	$('#cartFooterButton').html('<%= link_to orders_path, method:"post" do %><span class="btn btn-success">Place Order!</span><% end %>');
-	$('#cartFooterUserName').html('<%= @user.fname %></h4>');
+	$('#cartFooterUserName').html('<%= @user.fname %>');
+	$('#loginIcon').notify("Welcome! <%= @user.fname %>", { position: "bottom right", className: "success" });
 <% end %>

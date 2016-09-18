@@ -4,9 +4,6 @@ class SessionsController < ApplicationController
 	def new
 		@title = "Sign In"
     @failed = params[:login_again]
-    if not params[:go].nil?
-      @go = "cart"
-    end
 	end
 	
 	def create

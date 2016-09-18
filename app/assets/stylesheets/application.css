@@ -13,10 +13,7 @@
  *= require_tree .
  *= require_self
  */
- #wrongLoginInfo {
-	display: none;
-}
-
+ 
 .fullImagesHomePage{
 	width: 100%;
 	height: 60vh;
@@ -44,3 +41,8 @@
 	height: 50vh;
     background-size: cover;
 }
+
+footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
