@@ -1,5 +1,5 @@
 <% @statusCode.each do |code| %>
 	<% if code == "User exists" %>
-		$('#email').notify("Email already registered!");		
+		$('#emailSignUp').notify("Email already registered!", { position: "right bottom"});		
 	<% end %>
 <% end %>

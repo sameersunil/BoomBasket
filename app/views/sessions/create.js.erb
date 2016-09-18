@@ -1,8 +1,8 @@
 <% if @user.nil? %>
-	$("#loginButton").notify("Oops! Wrong Credentials", { position:"right" });
-	$("#emailTextField").val("");
-	$("#pwdTextField").val("");
-	$("#emailTextField").focus();
+	$("#loginButtonModal").notify("Oops! Wrong Credentials", { position:"right" });
+	$("#email").val("");
+	$("#pwd").val("");
+	$("#email").focus();
 <% else %>
 	$('#login').modal('hide');
 	$('#loginIcon').html('<a data-toggle="dropdown" type = "button"><span class="glyphicon glyphicon-user"><%= @user.fname %></span><ul class="dropdown-menu"><li><a href=<%= orders_path %>><span class="glyphicon glyphicon-list-alt"></span> Orders</a></li><li><a href=<%= sign_out_path %>><span class="glyphicon glyphicon-log-out"></span> Logout</a></li></ul></a>');

@@ -10,7 +10,7 @@
           <div class="row form-group">
             <label class="control-label col-sm-4" for="email">Email</label>
             <div class="col-sm-8">
-              <%= f.text_field :email, class: "form-control", id: "email", placeholder: "Email" %>            </div>
+              <%= f.text_field :email, class: "form-control", id: "emailSignUp", placeholder: "Email" %>            </div>
           </div>
           <div class="row form-group">
             <label class="control-label col-sm-4" for="email">First Name</label>
@@ -25,24 +25,24 @@
           <div class="row form-group">
             <label class="control-label col-sm-4" for="pwd">Password</label>
             <div class="col-sm-8">
-              <%= f.password_field :pwd, class: "form-control", id: "pwd" , placeholder: "Password" %>
+              <%= f.password_field :pwd, class: "form-control", id: "pwdSignUp" , placeholder: "Password" %>
             </div>
           </div>
           <div class="row form-group">
             <label class="control-label col-sm-4" for="pwd">Re-enter Password</label>
             <div class="col-sm-8">
-              <%= f.password_field :pwdr, class: "form-control", id: "pwdR" , placeholder: "Renter Password" %>
+              <%= f.password_field :pwdr, class: "form-control", id: "pwdSignUpR" , placeholder: "Renter Password" %>
             </div>
           </div>
           <div class="row form-group">
             <label class="control-label col-sm-4" for="pwd">Country</label>
             <div class="col-sm-8">
-              <%= f.text_field :country, class: "form-control", id: "country" , placeholder: "Country" %>
+              <%= f.select :country, ["India", "China", "Korea"], class: "form-control", id: "country" , placeholder: "Country" %>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-success" id="signUpButton">Sign Up</button>
+          <button class="btn btn-success" id="signUpButtonModal">Sign Up</button>
         </div>
       <% end %>
     </div>

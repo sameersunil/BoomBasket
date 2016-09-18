@@ -15,12 +15,12 @@
 //= require turbolinks
 //= require_tree .
 $(document).ready(function(){
-	$('#signUpButton').click(function(e){
+	$('#signUpButtonModal').click(function(e){
 		if(!checkFieldsSignUp()){
 			e.preventDefault();
 		}
 	});
-	$('#loginButton').click(function(e){
+	$('#loginButtonModal').click(function(e){
 		if(!checkFieldsLogin()){
 			e.preventDefault();
 		}
@@ -32,8 +32,8 @@ function hideLogin(){
 }
 
 function checkFieldsSignUp(){
-	if($('#email').val() == ""){
-		$("#email").notify("Please enter email!", { position: "right bottom" });
+	if($('#emailSignUp').val() == ""){
+		$("#emailSignUp").notify("Please enter email!", { position: "right bottom" });
 		return false;
 	}
 	else if($('#fname').val() == ""){
@@ -44,15 +44,15 @@ function checkFieldsSignUp(){
 		$('#lname').notify("Please enter your last name!", { position: "right bottom" });
 		return false;
 	}
-	else if($('#pwd').val() == ""){
-		$('#pwd').notify("Please enter password!", { position: "right bottom" });
+	else if($('#pwdSignUp').val() == ""){
+		$('#pwdSignUp').notify("Please enter password!", { position: "right bottom" });
 		return false;
 	}
-	else if($('#pwdR').val() == ""){
-		$('#pwdR').notify("Please enter password again!", { position: "right bottom" });
+	else if($('#pwdSignUpR').val() == ""){
+		$('#pwdSignUpR').notify("Please enter password again!", { position: "right bottom" });
 		return false;
-	}else if($("#pwd").val() != $('#pwdR').val()){
-		$("#pwdR").notify("Re-entered password does not match", { position: "right bottom" });
+	}else if($("#pwdSignUp").val() != $('#pwdSignUpR').val()){
+		$("#pwdSignUpR").notify("Re-entered password does not match", { position: "right bottom" });
 		return false;
 	}
 	else if($('#country').val() == ""){
