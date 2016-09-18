@@ -16,18 +16,13 @@
 //= require_tree .
 $(document).ready(function(){
 	$('#signUpButton').click(function(e){
-		console.log($('#email').val());
-		console.log($('#fname').val());
-		console.log($('#lname').val());
-		console.log($('#pwd').val());
-		console.log($('#pwdR').val());
-		console.log($('#country').val());
-		if(!checkFields()){
+		if(!checkFieldsSignUp()){
 			e.preventDefault();
-			return false;
-		}else{
-			console.log("equal");
-			return true;
+		}
+	});
+	$('#loginButton').click(function(e){
+		if(!checkFieldsLogin()){
+			e.preventDefault();
 		}
 	});
 });
@@ -36,32 +31,45 @@ function hideLogin(){
 	$('#login').modal('toggle');
 }
 
-function checkFields(){
+function checkFieldsSignUp(){
 	if($('#email').val() == ""){
-		$("#email").notify("Please enter email!");
+		$("#email").notify("Please enter email!", { position: "right bottom" });
 		return false;
 	}
 	else if($('#fname').val() == ""){
-		$('#fname').notify("Please enter your first name!");
+		$('#fname').notify("Please enter your first name!", { position: "right bottom" });
 		return false;
 	}
 	else if($('#lname').val() == ""){
-		$('#lname').notify("Please enter your last name!");
+		$('#lname').notify("Please enter your last name!", { position: "right bottom" });
 		return false;
 	}
 	else if($('#pwd').val() == ""){
-		$('#pwd').notify("Please enter password!");
+		$('#pwd').notify("Please enter password!", { position: "right bottom" });
 		return false;
 	}
 	else if($('#pwdR').val() == ""){
-		$('#pwdR').notify("Please enter password again!");
+		$('#pwdR').notify("Please enter password again!", { position: "right bottom" });
 		return false;
 	}else if($("#pwd").val() != $('#pwdR').val()){
-		$("#pwdR").notify("Re-entered password does not match");
+		$("#pwdR").notify("Re-entered password does not match", { position: "right bottom" });
 		return false;
 	}
 	else if($('#country').val() == ""){
-		$('#country').notify("Please enter country!");
+		$('#country').notify("Please enter country!", { position: "right bottom" });
+		return false;
+	}
+
+	return true;
+}
+
+function checkFieldsLogin(){
+	if($('#email').val() == ""){
+		$("#email").notify("Please enter email!", { position: "right bottom" });
+		return false;
+	}
+	else if($('#pwd').val() == ""){
+		$('#pwd').notify("Please enter password!", { position: "right bottom" });
 		return false;
 	}
 

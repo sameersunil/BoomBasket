@@ -1,5 +1,5 @@
 <% if @user.nil? %>
-	$("#wrongLoginInfo").notify("Oops! Wrong Credentials", { position:"right" });
+	$("#loginButton").notify("Oops! Wrong Credentials", { position:"right" });
 	$("#emailTextField").val("");
 	$("#pwdTextField").val("");
 	$("#emailTextField").focus();
