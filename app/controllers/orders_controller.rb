@@ -3,9 +3,8 @@ class OrdersController < ApplicationController
 	def show
 		@title = "Order"
 		@user = current_user
-		order = Order.find(params[:id])
-		@orderID = order.id
-		productsInfo = getProductsList order.summary
+		@order = Order.find(params[:id])
+		productsInfo = getProductsList @order.summary
 		@productsList = productsInfo[0]
 		@quantityList = productsInfo[1]
 	end
@@ -43,6 +42,6 @@ class OrdersController < ApplicationController
         session[:count] = "0"
         order = Order.new email: @user.email, summary: summary, total: total
         order.save
-        redirect_to root_path(info: "Continue Shopping!")
+        redirect_to order_path(id: order.id, info: "Continue Shopping!")
 	end
 end

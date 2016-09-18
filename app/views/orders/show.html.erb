@@ -6,14 +6,14 @@
 		<li><%= link_to "Video Games", products_path(category: "Video Games", page: "1") %></li>
 		<li><%= link_to "Model Airplanes", airplanes_path(page: "1") %></li>
 	</ul>
-	<h2><span class="glyphicon glyphicon-list-alt"></span> Order <%= @orderID %></h2>
+	<h2><span class="glyphicon glyphicon-list-alt"></span> Order <%= @order.id %></h2>
 	<table class="table">
 	    <thead>
 	      <tr>
-	        <th>Item</th>
-	        <th>Price</th>
-	        <th>Quantity</th>
-	        <th>Total</th>
+	        <th>ITEM</th>
+	        <th>PRICE</th>
+	        <th>QUANTITY</th>
+	        <th>TOTAL</th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -27,7 +27,13 @@
 			        <td><%= @quantityList[i] %></td>
 			        <td>&#8377;<%= number_with_precision(@quantityList[i].to_i * @productsList[i].price, :precision => 2, :delimiter => ',') %></td>
 	      		</tr>
-	      <% end %>
+	      	<% end %>
+	      	<tr>
+      			<td></td>
+      			<td></td>
+      			<td></td>
+      			<td><strong>&#8377;<%= number_with_precision(@order.total, :precision => 2, :delimiter => ',') %></strong></td>
+	      	</tr>
 	    </tbody>
 	</table>
 </div>
